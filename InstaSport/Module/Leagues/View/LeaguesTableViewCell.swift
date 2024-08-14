@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 class LeaguesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var leagueImageLabel: UIImageView!
@@ -49,8 +49,18 @@ class LeaguesTableViewCell: UITableViewCell {
         self.contentView.layer.masksToBounds = true
     }
     
-    func setUpLeagueCell(title:String){
-//        leagueImageLabel.image = photo
+    func setUpLeagueCell(title:String,photo:String,check:Bool){
+        
+
+        if check{
+            if let url = URL(string: photo){
+                leagueImageLabel.kf.setImage(with: url)
+            }
+        }else{
+            leagueImageLabel.image=UIImage(named: photo)
+        }
+        
+        
         leagueTitleLabel.text = title
     }
 }
