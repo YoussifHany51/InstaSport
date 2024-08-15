@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import Kingfisher
 class LeaguesViewModel{
     var sport:Sports
     var arrayOfLeagues:[SportsProtocol] = []
