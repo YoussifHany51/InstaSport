@@ -13,8 +13,9 @@ class LeaguesViewController: UIViewController,UITableViewDelegate,UITableViewDat
     @IBOutlet weak var leaguesTableView: UITableView!
     
     var arryOfLeagues : [SportsProtocol]?
-//    var league:League?
     var sport:Sports?
+    var activityIndicator: UIActivityIndicatorView!
+    var leaguesViewModel: LeaguesViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,27 +25,31 @@ class LeaguesViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         let cellNib = UINib(nibName: "LeaguesTableViewCell", bundle: nil)
         leaguesTableView.register(cellNib, forCellReuseIdentifier: "leaguesCell")
+        activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
         checkSport()
     }
     func checkSport(){
+        activityIndicator.startAnimating()
         switch sport! {
         case .football:
-            LeaguesViewModel(sport: .football) { arr in
+            leaguesViewModel = LeaguesViewModel(sport: .football) { arr in
                 self.arryOfLeagues = arr as! [FootBallModel]
                 self.reloadViewData()
             }
         case .basketball:
-            LeaguesViewModel(sport: .basketball) { arr in
+            leaguesViewModel = LeaguesViewModel(sport: .basketball) { arr in
                 self.arryOfLeagues = arr as! [BasketBallModel]
                 self.reloadViewData()
             }
         case .tennis:
-            LeaguesViewModel(sport: .tennis) { arr in
+            leaguesViewModel = LeaguesViewModel(sport: .tennis) { arr in
                 self.arryOfLeagues = arr as! [TennisModel]
                 self.reloadViewData()
             }
         case .cricket:
-            LeaguesViewModel(sport: .cricket) { arr in
+            leaguesViewModel = LeaguesViewModel(sport: .cricket) { arr in
                 self.arryOfLeagues = arr as! [CricketModel]
                 self.reloadViewData()
             }
@@ -52,17 +57,16 @@ class LeaguesViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     func reloadViewData(){
+        activityIndicator.stopAnimating()
         self.leaguesTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Num of rows\(arryOfLeagues?.count)")
         return arryOfLeagues?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "leaguesCell", for: indexPath) as! LeaguesTableViewCell
-        //let league = arryOfLeagues![indexPath.row]
         switch sport! {
         case .football:
             let obj = arryOfLeagues![indexPath.row] as! FootBallModel
