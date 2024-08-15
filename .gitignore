@@ -4,7 +4,10 @@
  
 ## User settings
 xcuserdata/
- 
+
+
+InstaSport.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/
+
 ## Obj-C/Swift specific
 *.hmap
 *.DS_Store
