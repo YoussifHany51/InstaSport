@@ -15,7 +15,6 @@
 		09C626302C6BA917001FC2BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6262C2C6BA917001FC2BD /* AppDelegate.swift */; };
 		09C626312C6BA917001FC2BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09C6262D2C6BA917001FC2BD /* Assets.xcassets */; };
 		09C626322C6BA917001FC2BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6262E2C6BA917001FC2BD /* SceneDelegate.swift */; };
-		09C626472C6BA946001FC2BD /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6263D2C6BA946001FC2BD /* League.swift */; };
 		09C626482C6BA946001FC2BD /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6263E2C6BA946001FC2BD /* Sport.swift */; };
 		09C626542C6BAA77001FC2BD /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C626492C6BAA77001FC2BD /* FavoriteViewController.swift */; };
 		09C626552C6BAA77001FC2BD /* AllSportsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6264B2C6BAA77001FC2BD /* AllSportsCollectionViewCell.swift */; };
@@ -56,7 +55,6 @@
 		09C6262C2C6BA917001FC2BD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09C6262D2C6BA917001FC2BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09C6262E2C6BA917001FC2BD /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		09C6263D2C6BA946001FC2BD /* League.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = League.swift; sourceTree = "<group>"; };
 		09C6263E2C6BA946001FC2BD /* Sport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
 		09C626492C6BAA77001FC2BD /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		09C6264B2C6BAA77001FC2BD /* AllSportsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllSportsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -253,16 +251,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-
-		09C626672C6BCDB8001FC2BD /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				09C6263D2C6BA946001FC2BD /* League.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-
 		09C626682C6BCDBE001FC2BD /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,7 +419,6 @@
 				09A602012C6D2D1A00F036AE /* NetworkConnectionManager.swift in Sources */,
 				3C04253E2C6BC18700F6FDE5 /* FootBallModel.swift in Sources */,
 				3C04253C2C6BC18700F6FDE5 /* BasketBallModel.swift in Sources */,
-				09C626472C6BA946001FC2BD /* League.swift in Sources */,
 				3C04257E2C6D243D00F6FDE5 /* TeamModel.swift in Sources */,
 				3C0425342C6BC17600F6FDE5 /* NWService.swift in Sources */,
 				09C626572C6BAA77001FC2BD /* AllSportsViewController.swift in Sources */,
