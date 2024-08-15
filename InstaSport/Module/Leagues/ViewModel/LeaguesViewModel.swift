@@ -10,10 +10,8 @@ import Kingfisher
 class LeaguesViewModel{
     var sport:Sports
     var arrayOfLeagues:[SportsProtocol] = []
-    //var view:ReloadData?
     init(sport:Sports,handler:@escaping(_ arr:[SportsProtocol])->Void){
         self.sport=sport
-        // self.view=view
         switch self.sport {
         case .football: DataParser().parsingFBData(sport: sport) { decodedData in
             let res = decodedData as! FootBallResult

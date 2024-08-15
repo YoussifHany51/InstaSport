@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import UIKit
 
 struct League{
-    let image : UIImage
+    let leagueID : Int
+    let image : String
     let title : String
 }

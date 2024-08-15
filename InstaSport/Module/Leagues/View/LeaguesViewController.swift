@@ -15,6 +15,8 @@ class LeaguesViewController: UIViewController,UITableViewDelegate,UITableViewDat
     var arryOfLeagues : [SportsProtocol]?
     var viewModel:LeaguesViewModel?
     var sport:Sports?
+    var activityIndicator: UIActivityIndicatorView!
+    var leaguesViewModel: LeaguesViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,9 +26,13 @@ class LeaguesViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         let cellNib = UINib(nibName: "LeaguesTableViewCell", bundle: nil)
         leaguesTableView.register(cellNib, forCellReuseIdentifier: "leaguesCell")
+        activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
         checkSport()
     }
     func checkSport(){
+        activityIndicator.startAnimating()
         switch sport! {
         case .football:
             viewModel=LeaguesViewModel(sport: .football) { arr in
@@ -52,16 +58,15 @@ class LeaguesViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     func reloadViewData(){
+        activityIndicator.stopAnimating()
         self.leaguesTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print("Num of rows\(arryOfLeagues?.count)")
         return arryOfLeagues?.count ?? 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "leaguesCell", for: indexPath) as! LeaguesTableViewCell
-        //let league = arryOfLeagues![indexPath.row]
         switch sport! {
         case .football:
             let obj = arryOfLeagues![indexPath.row] as! FootBallModel
