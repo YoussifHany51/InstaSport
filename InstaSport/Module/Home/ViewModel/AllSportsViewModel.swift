@@ -17,8 +17,5 @@ class AllSportsViewModel{
         arryOfSports.append(Sport(image: UIImage(named: "Basketball")!, title: "Basketball",sportEnum: .basketball))
         arryOfSports.append(Sport(image: UIImage(named: "Tennis")!, title: "Tennis",sportEnum: .tennis))
         arryOfSports.append(Sport(image: UIImage(named: "Cricket")!, title: "Cricket",sportEnum: .cricket))
-//        arryOfSports.append(Sport(image: UIImage(named: "Hockey")!, title: "Hockey"))
-//        arryOfSports.append(Sport(image: UIImage(named: "Baseball")!, title: "Baseball"))
-//        arryOfSports.append(Sport(image: UIImage(named: "AmericanFootball")!, title: "American Football"))
     }
 }
