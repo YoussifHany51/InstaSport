@@ -19,25 +19,21 @@ class LeaguesViewModel{
             let res = decodedData as! FootBallResult
             self.arrayOfLeagues = res.result
             handler(self.arrayOfLeagues)
-            //self.view?.reloadViewData()
         }
         case .basketball: DataParser().parsingFBData(sport: sport) { decodedData in
             let res = decodedData as! BasketBallResult
             self.arrayOfLeagues = res.result
             handler(self.arrayOfLeagues)
-            //self.view?.reloadViewData()
         }
         case .tennis: DataParser().parsingFBData(sport: sport) { decodedData in
             let res = decodedData as! TennisResult
             self.arrayOfLeagues = res.result
             handler(self.arrayOfLeagues)
-            //self.view?.reloadViewData()
         }
         case .cricket: DataParser().parsingFBData(sport: sport) { decodedData in
             let res = decodedData as! CricketResult
             self.arrayOfLeagues = res.result
             handler(self.arrayOfLeagues)
-            //self.view?.reloadViewData()
         }
         }
     }
