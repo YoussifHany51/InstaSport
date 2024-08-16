@@ -7,25 +7,26 @@
 
 import Foundation
 
-struct FootBallResult: Codable , SportsProtocol{
+struct LeagueResult: Codable{
     let success: Int
-    let result: [FootBallModel]
+    let result: [LeagueModel]
 }
 
 // MARK: - Result
-struct FootBallModel: Codable, SportsProtocol {
+struct LeagueModel: Codable {
     let leagueKey: Int
     let leagueName: String
-    let countryKey: Int
-    let countryName: String
-    let leagueLogo, countryLogo: String?
+    let leagueLogo: String?
 
     enum CodingKeys: String, CodingKey {
         case leagueKey = "league_key"
         case leagueName = "league_name"
-        case countryKey = "country_key"
-        case countryName = "country_name"
         case leagueLogo = "league_logo"
-        case countryLogo = "country_logo"
+    }
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.leagueKey = try container.decode(Int.self, forKey: .leagueKey)
+        self.leagueName = try container.decode(String.self, forKey: .leagueName)
+        self.leagueLogo = try container.decodeIfPresent(String.self, forKey: .leagueLogo)
     }
 }
