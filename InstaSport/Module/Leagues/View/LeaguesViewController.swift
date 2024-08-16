@@ -12,7 +12,7 @@ import UIKit
 class LeaguesViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var leaguesTableView: UITableView!
     
-    var arryOfLeagues : [SportsProtocol]?
+    var arryOfLeagues : [LeagueModel]?
     var viewModel:LeaguesViewModel?
     var sport:Sports?
     var activityIndicator: UIActivityIndicatorView!
@@ -33,27 +33,9 @@ class LeaguesViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     func checkSport(){
         activityIndicator.startAnimating()
-        switch sport! {
-        case .football:
-            viewModel=LeaguesViewModel(sport: .football) { arr in
-                self.arryOfLeagues = arr as! [FootBallModel]
-                self.reloadViewData()
-            }
-        case .basketball:
-            viewModel=LeaguesViewModel(sport: .basketball) { arr in
-                self.arryOfLeagues = arr as! [BasketBallModel]
-                self.reloadViewData()
-            }
-        case .tennis:
-            viewModel=LeaguesViewModel(sport: .tennis) { arr in
-                self.arryOfLeagues = arr as! [TennisModel]
-                self.reloadViewData()
-            }
-        case .cricket:
-            viewModel=LeaguesViewModel(sport: .cricket) { arr in
-                self.arryOfLeagues = arr as! [CricketModel]
-                self.reloadViewData()
-            }
+        viewModel=LeaguesViewModel(sport: sport!) { arr in
+            self.arryOfLeagues = arr
+            self.reloadViewData()
         }
     }
     
@@ -67,21 +49,17 @@ class LeaguesViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "leaguesCell", for: indexPath) as! LeaguesTableViewCell
-        switch sport! {
-        case .football:
-            let obj = arryOfLeagues![indexPath.row] as! FootBallModel
-            let check = obj.leagueLogo == nil ? false : true
-            cell.setUpLeagueCell(title: obj.leagueName, photo: obj.leagueLogo ?? "imgFB",check: check)
-        case .basketball:
-            let obj = arryOfLeagues![indexPath.row] as! BasketBallModel
-            cell.setUpLeagueCell(title: obj.leagueName, photo: "imgBB",check: false)
-        case .tennis:
-            let obj = arryOfLeagues![indexPath.row] as! TennisModel
-            cell.setUpLeagueCell(title: obj.leagueName, photo: "imgT",check: false)
-        case .cricket:
-            let obj = arryOfLeagues![indexPath.row] as! CricketModel
-            cell.setUpLeagueCell(title: obj.leagueName, photo: "imgC",check: false)
+        let obj = arryOfLeagues![indexPath.row]
+        let check = obj.leagueLogo == nil ? false : true
+        switch(sport){
+        case .football:cell.setUpLeagueCell(title: obj.leagueName, photo: obj.leagueLogo ?? "imgFB",check: check)
+        case .basketball:cell.setUpLeagueCell(title: obj.leagueName, photo: obj.leagueLogo ?? "imgBB",check: check)
+        case .cricket:cell.setUpLeagueCell(title: obj.leagueName, photo: obj.leagueLogo ?? "imgC",check: check)
+        case .tennis:cell.setUpLeagueCell(title: obj.leagueName, photo: obj.leagueLogo ?? "imgT",check: check)
+        case .none:
+            break
         }
+        
         return cell
     }
     
