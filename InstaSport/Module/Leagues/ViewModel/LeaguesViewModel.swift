@@ -9,30 +9,20 @@ import Foundation
 import Kingfisher
 class LeaguesViewModel{
     var sport:Sports
-    var arrayOfLeagues:[SportsProtocol] = []
-    init(sport:Sports,handler:@escaping(_ arr:[SportsProtocol])->Void){
+    var arrayOfLeagues:[LeagueModel] = []
+    init(sport:Sports,handler:@escaping(_ arr:[LeagueModel])->Void){
         self.sport=sport
-        switch self.sport {
-        case .football: DataParser().parsingFBData(sport: sport) { decodedData in
-            let res = decodedData as! FootBallResult
+        
+        DataParser().parsingFBData(ClassType: LeagueResult.self, checkLeagueOrSport: true, sport: sport) { decodedData in
+            let res = decodedData
             self.arrayOfLeagues = res.result
             handler(self.arrayOfLeagues)
         }
-        case .basketball: DataParser().parsingFBData(sport: sport) { decodedData in
-            let res = decodedData as! BasketBallResult
-            self.arrayOfLeagues = res.result
-            handler(self.arrayOfLeagues)
-        }
-        case .tennis: DataParser().parsingFBData(sport: sport) { decodedData in
-            let res = decodedData as! TennisResult
-            self.arrayOfLeagues = res.result
-            handler(self.arrayOfLeagues)
-        }
-        case .cricket: DataParser().parsingFBData(sport: sport) { decodedData in
-            let res = decodedData as! CricketResult
-            self.arrayOfLeagues = res.result
-            handler(self.arrayOfLeagues)
-        }
+        
         }
     }
-}
+
+
+/*
+ case .basketball:
+ */
