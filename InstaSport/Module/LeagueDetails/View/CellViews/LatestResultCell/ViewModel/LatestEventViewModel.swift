@@ -6,3 +6,11 @@
 //
 
 import Foundation
+class LatestResultViewModel{
+    var obj : EventModel
+    
+    init(obj:EventModel){
+        self.obj=obj
+    }
+    
+}
