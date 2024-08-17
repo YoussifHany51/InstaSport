@@ -43,7 +43,6 @@ class LeaguesViewController: UIViewController,UITableViewDelegate,UITableViewDat
         activityIndicator.stopAnimating()
         self.leaguesTableView.reloadData()
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arryOfLeagues?.count ?? 0
     }
@@ -61,6 +60,13 @@ class LeaguesViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let VC = self.storyboard?.instantiateViewController(withIdentifier: "LeagueDetailsCollectionViewController") as! LeagueDetailsCollectionViewController
+        let str = "\(viewModel!.arrayOfLeagues[indexPath.row].leagueKey)"
+        VC.viewModel = LeagueDetailsViewModel(sport: sport!,leagueNum:str )
+        self.navigationController?.pushViewController(VC, animated: true)
+        
     }
     
 }
