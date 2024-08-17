@@ -44,7 +44,7 @@ class AllSportsViewController: UIViewController,UICollectionViewDelegate,UIColle
         return 0.1
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LeaguesViewController") as! LeaguesViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LeaguesTableViewController") as! LeaguesTableViewController
         vc.sport = arryOfSports[indexPath.row].sportEnum
         self.navigationController?.pushViewController(vc, animated: true)
     }
