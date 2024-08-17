@@ -14,31 +14,41 @@ class NWService{
         url+sport!.rawValue+"/?"
     }
     
-    init(sport: Sports) {
+    
+    
+    var checkSportOrLeague:Bool  //false leaguesDetails
+    var checkUpComingOrLastEvents:Bool //true upComingEvent
+    
+    init(checkSportOrLeague:Bool,checkUpComingOrLastEvents:Bool,sport: Sports) {
         self.sport = sport
+        self.checkSportOrLeague = checkSportOrLeague
+        self.checkUpComingOrLastEvents = checkUpComingOrLastEvents
     }
-    func fetchLeaguesAPIData(handler:@escaping(_ data:Data)->Void){
-        let param: [String: Any] = [
-            "met": "Leagues",
-            "APIkey": "2c28d4947373c9aad33c4b48c0f99c79ce4469f4c59f207b0ee9d8f73d2ae9e2"
-        ]
+    
+    
+    
+    func fetchLeaguesAPIData(leagueID:String="305",handler:@escaping(_ data:Data)->Void){
+        var param:[String:Any]=[:]
+        
+        if (checkSportOrLeague){
+        param = [
+           "met": "Leagues",
+           "APIkey": "2c28d4947373c9aad33c4b48c0f99c79ce4469f4c59f207b0ee9d8f73d2ae9e2"
+       ]
+        }else{
+            param = ["met":"Fixtures",
+                     "leagueId":leagueID,
+                     "from":checkUpComingOrLastEvents ? DateOptimizer.currentDate : DateOptimizer.oneYearBefore,
+                     "to":checkUpComingOrLastEvents ? DateOptimizer.oneYearAfter : DateOptimizer.currentDate,
+                     "APIkey": "2c28d4947373c9aad33c4b48c0f99c79ce4469f4c59f207b0ee9d8f73d2ae9e2"]
+        }
+         
         AF.request(fullURL,method: .get,parameters: param,encoding: URLEncoding.default,headers: nil,interceptor: nil).response { response in
             switch response.result{
-            case .success(let data):handler(data!)
+            case .success(let data):print("Fetch data success");handler(data!)
             case .failure(let error):print("Error in fetching data\(error.localizedDescription)")
             }
         }
 
     }
-//    func fetchImageAsData(strUrl:String,handler:@escaping(_ data1:Data?)->Void) {
-//
-//        guard let url = URL(string: strUrl) else { return }
-//        DispatchQueue.global().async {
-//            if let data = try? Data(contentsOf: url) {
-//                handler(data)
-//            }else{
-//                handler(nil)
-//            }
-//        }
-//    }
 }

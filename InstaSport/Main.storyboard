@@ -76,7 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0LK-Yf-4Ru" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3080" y="-346"/>
+            <point key="canvasLocation" x="4848" y="-468"/>
         </scene>
         <!--Favorite-->
         <scene sceneID="Mdf-mh-BMa">
@@ -94,6 +94,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bvu-0o-O6n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1966" y="51"/>
+        </scene>
+        <!--League Details Collection View Controller-->
+        <scene sceneID="d2b-nG-b7T">
+            <objects>
+                <collectionViewController storyboardIdentifier="LeagueDetailsCollectionViewController" id="bU7-Qp-JPi" customClass="LeagueDetailsCollectionViewController" customModule="InstaSport" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="XzI-r8-Ye2">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ggB-5O-VqC">
+                            <size key="itemSize" width="393" height="190"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="bU7-Qp-JPi" id="L4K-ay-VEu"/>
+                            <outlet property="delegate" destination="bU7-Qp-JPi" id="u9M-qz-AHD"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qzG-qz-BeY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3168.7022900763359" y="-354.22535211267609"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="A4N-JQ-8pM">
