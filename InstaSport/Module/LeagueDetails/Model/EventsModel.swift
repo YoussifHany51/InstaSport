@@ -16,7 +16,6 @@ struct EventModel: Decodable {
     let eventAwayTeam: String
     let eventHalftimeResult: String
     let eventFinalResult, eventPenaltyResult: String
-    let eventStatus: String
     let countryName : String
     let eventStadium : String
     let homeTeamLogo, awayTeamLogo: String?
@@ -30,7 +29,7 @@ struct EventModel: Decodable {
         self.eventHalftimeResult = try container.decode(String.self, forKey: .eventHalftimeResult)
         self.eventFinalResult = try container.decode(String.self, forKey: .eventFinalResult)
         self.eventPenaltyResult = try container.decode(String.self, forKey: .eventPenaltyResult)
-        self.eventStatus = try container.decode(String.self, forKey: .eventStatus)
+        //self.eventStatus = try container.decode(String.self, forKey: .eventStatus)
         self.countryName = try container.decode(String.self, forKey: .countryName)
         self.eventStadium = try container.decode(String.self, forKey: .eventStadium)
         self.homeTeamLogo = try container.decodeIfPresent(String.self, forKey: .homeTeamLogo)
