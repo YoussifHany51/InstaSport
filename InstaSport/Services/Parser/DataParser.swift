@@ -7,11 +7,10 @@
 
 import Foundation
 class DataParser{
-    func parsingFBData<ClassType : Decodable>(ClassType : ClassType.Type,checkLeagueOrSport:Bool,checkUpComingOrLastEvents:Bool=false,sport:Sports,handler:@escaping(_ decodedData:ClassType)->Void){
-//        var decodedData:FootBallResult?
-        NWService(checkLeagueOrSport:checkLeagueOrSport , checkUpComingOrLastEvents: checkUpComingOrLastEvents, sport: sport).fetchLeaguesAPIData(leagueID: "305") { data in
+    func parsingFBData<ClassType : Decodable>(ClassType : ClassType.Type,checkSportOrLeague:Bool,checkUpComingOrLastEvents:Bool=false,leagueId:String="305",sport:Sports,handler:@escaping(_ decodedData:ClassType)->Void){
+        NWService(checkSportOrLeague:checkSportOrLeague, checkUpComingOrLastEvents: checkUpComingOrLastEvents, sport: sport).fetchLeaguesAPIData(leagueID: leagueId) { data in
             do{
-                    let decodedData = try JSONDecoder().decode(ClassType.self, from: data)
+                let decodedData = try JSONDecoder().decode(ClassType, from: data)
                    handler(decodedData)
             }catch{
                 print("Error in decoding Data")
