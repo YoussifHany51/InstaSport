@@ -26,9 +26,32 @@ class LeaguesTableViewCell: UITableViewCell {
     }
     
     @IBAction func leagueYoutubeBtn(_ sender: Any) {
+        print(leagueCell?.leagueUrl ?? "")
+        let str = "https://www.youtube.com/@\(String(describing: leagueCell?.leagueName))"
+        //let youtubeURL = leagueCell?.leagueUrl
+        DispatchQueue.main.async {
+            self.openYouTube()
+        }
     }
     
+    var leagueCell : LeagueModel?{
+        didSet{
+            guard let leagueCell = leagueCell else{return}
+            leagueImageLabel.kf.indicatorType = .activity
+            leagueImageLabel.kf.setImage(with: URL(string: leagueCell.leagueLogo ?? "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png"))
+            leagueTitleLabel.text = leagueCell.leagueName
+        }
+    }
     
+    func openYouTube() {
+        let appUrl = URL(string: "youtube://app")
+        if UIApplication.shared.canOpenURL(appUrl! as URL) {
+            UIApplication.shared.open(appUrl!)
+        } else {
+            UIApplication.shared.open(URL(string: ("https://www.youtube.com/@\(String(describing: leagueTitleLabel.text))"))!, options: [:], completionHandler: nil)
+        }
+    }
+
     func setRoundedForImgCell(myImg : UIImageView){
         let saveCenter = myImg.center
         let newFrame:CGRect = CGRect(origin: CGPoint(x: myImg.frame.origin.x,y : myImg.frame.origin.y), size: CGSize(width: myImg.frame.size.width - 20, height: myImg.frame.size.height - 20))

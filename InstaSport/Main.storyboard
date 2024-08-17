@@ -47,60 +47,34 @@
             </objects>
             <point key="canvasLocation" x="1966" y="-785"/>
         </scene>
-        <!--Leagues View Controller-->
-        <scene sceneID="gX7-Re-2gS">
+        <!--Leagues Table View Controller-->
+        <scene sceneID="PV7-ui-fDM">
             <objects>
-                <viewController storyboardIdentifier="LeaguesViewController" id="H3R-Lf-AIC" customClass="LeaguesViewController" customModule="InstaSport" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WPC-Sc-u2x">
+                <tableViewController storyboardIdentifier="LeaguesTableViewController" id="xyx-A5-3EO" customClass="LeaguesTableViewController" customModule="InstaSport" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="9Br-WA-Spk">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7jY-yd-VfW">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="5R6-sZ-rsv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="7jY-yd-VfW" firstAttribute="leading" secondItem="5R6-sZ-rsv" secondAttribute="leading" id="Fku-K4-wcB"/>
-                            <constraint firstItem="5R6-sZ-rsv" firstAttribute="bottom" secondItem="7jY-yd-VfW" secondAttribute="bottom" id="Gz2-bU-5Hc"/>
-                            <constraint firstItem="7jY-yd-VfW" firstAttribute="top" secondItem="5R6-sZ-rsv" secondAttribute="top" id="Kdc-Nu-c0Z"/>
-                            <constraint firstItem="7jY-yd-VfW" firstAttribute="top" secondItem="5R6-sZ-rsv" secondAttribute="top" id="Y8x-qi-6f7"/>
-                            <constraint firstItem="5R6-sZ-rsv" firstAttribute="trailing" secondItem="7jY-yd-VfW" secondAttribute="trailing" id="rjo-sc-X1f"/>
-                        </constraints>
-                    </view>
+                        <connections>
+                            <outlet property="dataSource" destination="xyx-A5-3EO" id="nFB-JH-7Hh"/>
+                            <outlet property="delegate" destination="xyx-A5-3EO" id="IYj-3P-9Co"/>
+                        </connections>
+                    </tableView>
                     <connections>
-                        <outlet property="leaguesTableView" destination="7jY-yd-VfW" id="7PZ-kF-pdS"/>
+                        <outlet property="leaguesTableView" destination="9Br-WA-Spk" id="EQz-Hq-YOk"/>
+                        <segue destination="bU7-Qp-JPi" kind="show" identifier="pushView" id="LZn-xF-8Hh"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0LK-Yf-4Ru" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eeL-DM-1mS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4848" y="-468"/>
-        </scene>
-        <!--Favorite-->
-        <scene sceneID="Mdf-mh-BMa">
-            <objects>
-                <viewController id="b12-GD-0Yt" customClass="FavoriteViewController" customModule="InstaSport" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="VZT-yR-VaT">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Wv2-VP-Xbv"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Favorite" image="star" catalog="system" id="XBe-We-QWx"/>
-                    <navigationItem key="navigationItem" id="xii-xR-PVS"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bvu-0o-O6n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1966" y="51"/>
+            <point key="canvasLocation" x="3207" y="-785"/>
         </scene>
         <!--League Details Collection View Controller-->
         <scene sceneID="d2b-nG-b7T">
             <objects>
                 <collectionViewController storyboardIdentifier="LeagueDetailsCollectionViewController" id="bU7-Qp-JPi" customClass="LeagueDetailsCollectionViewController" customModule="InstaSport" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="XzI-r8-Ye2">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ggB-5O-VqC">
@@ -115,10 +89,11 @@
                             <outlet property="delegate" destination="bU7-Qp-JPi" id="u9M-qz-AHD"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="i7H-Yt-ciz"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qzG-qz-BeY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3168.7022900763359" y="-354.22535211267609"/>
+            <point key="canvasLocation" x="3207" y="-56"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="A4N-JQ-8pM">
@@ -133,12 +108,31 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="xVT-uq-oai"/>
-                        <segue destination="b12-GD-0Yt" kind="relationship" relationship="viewControllers" id="Kbq-pY-YOL"/>
+                        <segue destination="mAN-n7-PJg" kind="relationship" relationship="viewControllers" id="8o0-dt-kQ7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHF-QA-QvC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1145.8015267175572" y="-346.47887323943661"/>
+        </scene>
+        <!--Favorite-->
+        <scene sceneID="TgU-Ye-rZJ">
+            <objects>
+                <tableViewController id="mAN-n7-PJg" customClass="FavoriteTableViewController" customModule="InstaSport" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="GFT-7x-RuQ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="mAN-n7-PJg" id="cf0-Zj-sbd"/>
+                            <outlet property="delegate" destination="mAN-n7-PJg" id="s3K-9H-qpY"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Favorite" image="star" catalog="system" id="qq8-Ij-P3a"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nvs-jg-qQR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1948" y="-56"/>
         </scene>
         <!--All Sports-->
         <scene sceneID="a3t-F1-PLh">
