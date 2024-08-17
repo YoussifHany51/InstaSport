@@ -39,7 +39,7 @@
                         <rect key="frame" x="379.33333333333331" y="30" width="170.66666666666669" height="161.33333333333334"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EventTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bib-TA-Pkg">
-                        <rect key="frame" x="241.99999999999997" y="57.333333333333336" width="83.666666666666657" height="22.333333333333336"/>
+                        <rect key="frame" x="243.33333333333334" y="57.333333333333336" width="83.666666666666657" height="22.333333333333336"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -52,8 +52,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stadium" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIk-5W-WM0">
-                        <rect key="frame" x="245.66666666666663" y="222.66666666666666" width="79" height="28.333333333333343"/>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                        <rect key="frame" x="248.66666666666666" y="225" width="72.666666666666657" height="26"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -81,7 +81,7 @@
                 <constraint firstAttribute="bottom" secondItem="Uc7-wX-HPz" secondAttribute="bottom" id="PDo-07-swj"/>
                 <constraint firstItem="Uc7-wX-HPz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="X13-oT-c8f"/>
                 <constraint firstItem="Iht-De-1ay" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="30" id="XfE-FR-7TE"/>
-                <constraint firstItem="Bib-TA-Pkg" firstAttribute="leading" secondItem="RKy-ep-uy8" secondAttribute="leading" id="ade-Xm-2H2"/>
+                <constraint firstItem="Bib-TA-Pkg" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="cBd-ae-Brf"/>
                 <constraint firstItem="Zud-Bt-xNc" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.299424" id="cqH-CA-C61"/>
                 <constraint firstItem="Iht-De-1ay" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.299424" id="e5Y-9q-r2c"/>
                 <constraint firstItem="Zud-Bt-xNc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="eDs-ZO-u7Z"/>
@@ -91,6 +91,7 @@
             </constraints>
             <size key="customSize" width="570" height="271"/>
             <connections>
+                <outlet property="imgViewAwayTeam" destination="Iht-De-1ay" id="jSH-jH-28h"/>
                 <outlet property="imgViewHomeTeam" destination="Zud-Bt-xNc" id="qJf-Ph-Zb1"/>
                 <outlet property="lblAwayTeam" destination="4Bq-rS-M7f" id="7ec-Fv-A5W"/>
                 <outlet property="lblEventDate" destination="RKy-ep-uy8" id="oZA-B1-Svw"/>
