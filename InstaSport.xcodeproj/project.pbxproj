@@ -54,6 +54,7 @@
 		3C0425B22C6FEC3700F6FDE5 /* InstaSportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0425B12C6FEC3700F6FDE5 /* InstaSportTests.swift */; };
 		3C0425CD2C701AFF00F6FDE5 /* LatestEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0425CC2C701AFF00F6FDE5 /* LatestEventViewModel.swift */; };
 		3C0425D12C70BBF100F6FDE5 /* UpComingEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0425D02C70BBF100F6FDE5 /* UpComingEventViewModel.swift */; };
+		3CCAD30C2C717B14000E4F61 /* TeamsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCAD30B2C717B13000E4F61 /* TeamsSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		3C0425B12C6FEC3700F6FDE5 /* InstaSportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaSportTests.swift; sourceTree = "<group>"; };
 		3C0425CC2C701AFF00F6FDE5 /* LatestEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestEventViewModel.swift; sourceTree = "<group>"; };
 		3C0425D02C70BBF100F6FDE5 /* UpComingEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingEventViewModel.swift; sourceTree = "<group>"; };
+		3CCAD30B2C717B13000E4F61 /* TeamsSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				3C0425A32C6FC38600F6FDE5 /* EventsModel.swift */,
+				3CCAD30B2C717B13000E4F61 /* TeamsSet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				09C626202C6BA8E7001FC2BD /* InstaSport.xcdatamodeld in Sources */,
 				09C626302C6BA917001FC2BD /* AppDelegate.swift in Sources */,
 				3C0425942C6FA48900F6FDE5 /* CollectionViewExtension.swift in Sources */,
+				3CCAD30C2C717B14000E4F61 /* TeamsSet.swift in Sources */,
 				3C0425912C6FA1CB00F6FDE5 /* TeamsCell.swift in Sources */,
 				3C0425A72C6FCD0000F6FDE5 /* DateOptimizer.swift in Sources */,
 				3C0425822C6D24AC00F6FDE5 /* E:DHelperModel.swift in Sources */,
