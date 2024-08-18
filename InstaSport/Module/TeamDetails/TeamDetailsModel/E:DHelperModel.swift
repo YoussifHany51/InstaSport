@@ -1,15 +1,3 @@
-//
-//  E:DHelperModel.swift
-//  InstaSport
-//
-//  Created by zyad Baset on 14/08/2024.
-//
-
-import Foundation
-enum PlayerInjured: String, Codable {
-    case no = "No"
-    case yes = "Yes"
-}
 
 enum PlayerType: String, Codable {
     case defenders = "Defenders"

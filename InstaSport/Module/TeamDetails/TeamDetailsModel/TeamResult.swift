@@ -6,7 +6,9 @@
 //
 
 import Foundation
+
+// MARK: - Eve
 struct TeamsResult: Codable {
     let success: Int
-    let team: [TeamModel]
+    let result: [TeamModel]
 }
