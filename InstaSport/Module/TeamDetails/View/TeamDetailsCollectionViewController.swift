@@ -7,20 +7,32 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+
 
 class TeamDetailsCollectionViewController: UICollectionViewController {
-
+    var viewModel:TeamDetailsViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel?.getData({
+            self.collectionView.reloadData()
+        })
+        self.collectionView.RegisterNib(cell: PlayerCardCell.self)
+        let compLayout = UICollectionViewCompositionalLayout{
+            (index , enviroment) in
+            if index == 0 {
+                return self.firstCollection()
+            }
+            else if index == 1{
+                return self.secondCollection()
+            }
+            else {
+                return self.thirdCollection()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+            }
+        }
+        
+        collectionView.setCollectionViewLayout(compLayout, animated: true)
+        
     }
 
     /*
@@ -37,21 +49,89 @@ class TeamDetailsCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 3
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        if section == 0{return 1}
+        else if  section == 1{return viewModel?.teamDetails?.coaches.count ?? 0}
+        else {return viewModel?.teamDetails?.players.count ?? 0}
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        if indexPath.section == 0{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath)
+            if let imgStr = viewModel?.teamDetails?.teamLogo{
+                if let url = URL(string:imgStr){
+                    (cell.viewWithTag(1)as! UIImageView).kf.setImage(with: url)
+                }else{
+                    (cell.viewWithTag(1)as! UIImageView).image=UIImage(named: "imgFB")
+                }}else{
+                    (cell.viewWithTag(1)as! UIImageView).image=UIImage(named: "imgFB")
+                }
+            return cell
+        }
+        else if indexPath.section == 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath)
+            
+            (cell.viewWithTag(1)as! UILabel).text = viewModel?.teamDetails?.coaches[indexPath.row].coachName
+            return cell
+            
+        }else{
+            let cell = collectionView.deque(cell: PlayerCardCell.self)
+            cell.viewModel = PlayerCardViewModel(player: (viewModel?.teamDetails?.players[indexPath.row])!)
+            cell.putData()
+            return cell
+        }
     
         // Configure the cell
+    }
     
-        return cell
+    
+    func firstCollection() -> NSCollectionLayoutSection{
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.79), heightDimension: .absolute(200))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets =   NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5)
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 5, bottom: 5, trailing: 0)
+        // animation
+        section.visibleItemsInvalidationHandler = { (items, offset, environment) in
+        items.forEach { item in
+        let distanceFromCenter = abs((item.frame.midX - offset.x) - environment.container.contentSize.width / 2.0)
+        let minScale: CGFloat = 0.8
+        let maxScale: CGFloat = 1.0
+        let scale = max(maxScale - (distanceFromCenter / environment.container.contentSize.width), minScale)
+        item.transform = CGAffineTransform(scaleX: scale, y: scale)
+        }}
+        return section
+    }
+    func secondCollection() -> NSCollectionLayoutSection{
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(100))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5)
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 30, leading: 5, bottom: 5, trailing: 0)
+        return section
+        
+    }
+    
+    func thirdCollection() -> NSCollectionLayoutSection{
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .absolute(200))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets =   NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5)
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = NSDirectionalEdgeInsets(top: 30, leading: 5, bottom: 5, trailing: 0)
+        return section
     }
 
     // MARK: UICollectionViewDelegate
