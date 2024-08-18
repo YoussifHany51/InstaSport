@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -68,6 +69,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeL-DM-1mS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3207" y="-785"/>
+        </scene>
+        <!--Team Details Collection View Controller-->
+        <scene sceneID="cko-BM-BJp">
+            <objects>
+                <collectionViewController storyboardIdentifier="TeamDetailsCollectionViewController" id="h4b-q6-wfY" customClass="TeamDetailsCollectionViewController" customModule="InstaSport" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="372-KR-d8K">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yiL-sV-OpI">
+                            <size key="itemSize" width="342" height="222"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cell1" id="6yY-Mj-6er">
+                                <rect key="frame" x="25.666666666666668" y="0.0" width="342" height="222"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hH2-fS-pb1">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="222"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HPJ-V9-EPq">
+                                            <rect key="frame" x="8" y="8" width="326" height="206"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="HPJ-V9-EPq" secondAttribute="bottom" constant="8" id="AfM-3H-tJh"/>
+                                        <constraint firstItem="HPJ-V9-EPq" firstAttribute="top" secondItem="hH2-fS-pb1" secondAttribute="top" constant="8" id="aXX-6d-GEE"/>
+                                        <constraint firstAttribute="trailing" secondItem="HPJ-V9-EPq" secondAttribute="trailing" constant="8" id="sOw-mz-fDm"/>
+                                        <constraint firstItem="HPJ-V9-EPq" firstAttribute="leading" secondItem="hH2-fS-pb1" secondAttribute="leading" constant="8" id="vbd-0K-fwi"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="342" height="222"/>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cell2" id="xGa-Zq-hnn">
+                                <rect key="frame" x="25.666666666666668" y="232" width="342" height="79"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Zi9-g9-0G8">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="79"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Coach" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaD-oL-8Nv">
+                                            <rect key="frame" x="24" y="8" width="151" height="63"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="342" height="79"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="h4b-q6-wfY" id="EaZ-Wa-LEJ"/>
+                            <outlet property="delegate" destination="h4b-q6-wfY" id="o12-ED-TVj"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1wL-3p-2jW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4277.0992366412211" y="-472.53521126760563"/>
         </scene>
         <!--League Details Collection View Controller-->
         <scene sceneID="d2b-nG-b7T">

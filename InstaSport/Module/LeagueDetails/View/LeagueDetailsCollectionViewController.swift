@@ -26,9 +26,11 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
             if index == 0 {
                 return self.drawFirstCollection()
             }
-            else {
+            else if index == 1 {
                 return self.drawSecondCollection()
 
+            }else{
+                return self.drawThirdCollection()
             }
         }
         self.collectionView.setCollectionViewLayout(compositionalLayout, animated: true)
@@ -50,7 +52,7 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 3
     }
 
 
@@ -59,8 +61,10 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
         if section == 0{
             return viewModel?.arrUpComingEvents.count ?? 0
         }
-        else {
+        else if section == 1 {
             return viewModel?.arrlastEvent.count ?? 0
+        }else{
+            return viewModel?.setTeams.count ?? 0
         }
         
     }
@@ -73,16 +77,28 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
             cell.putData()
             return cell
         }
-        else {
+        else if indexPath.section == 1 {
             let cell = collectionView.deque(cell: LatestResultCell.self)
             cell.viewModel = LatestResultViewModel(obj: viewModel!.arrlastEvent[indexPath.row])
             cell.putData()
             return cell
             
+        }else{
+            let cell = collectionView.deque(cell: TeamsCell.self)
+            cell.viewModel = TeamsViewModel(obj: viewModel!.arrTeams[indexPath.row])
+            cell.putData()
+            return cell
         }
         //cell.imgView
     }
-    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 2{
+            let VC = self.storyboard?.instantiateViewController(withIdentifier: "TeamDetailsCollectionViewController")as! TeamDetailsCollectionViewController
+            VC.viewModel=TeamDetailsViewModel(teamKey: viewModel!.arrTeams[indexPath.row].teamKey, sport: viewModel!.sport)
+            //self.navigationController?.pushViewController(VC, animated: true)
+            self.present(VC, animated: true)
+        }
+    }
     func drawFirstCollection() -> NSCollectionLayoutSection{
         // gave the item in group the full size of it
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
@@ -124,6 +140,7 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
         section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 5, bottom: 20, trailing: 5)
         return section
     }
+
     func setupFavoriteButton() {
         
         let favoriteButton = UIBarButtonItem(
@@ -134,6 +151,40 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
         )
         
         navigationItem.rightBarButtonItem = favoriteButton
+
+    
+    func drawThirdCollection() -> NSCollectionLayoutSection{
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .absolute(100))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets =   NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5)
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = NSDirectionalEdgeInsets(top: 30, leading: 5, bottom: 5, trailing: 0)
+        return section
+    }
+    // MARK: UICollectionViewDelegate
+
+    /*
+    // Uncomment this method to specify if the specified item should be highlighted during tracking
+    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    */
+
+    /*
+    // Uncomment this method to specify if the specified item should be selected
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    */
+
+    /*
+    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
+    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+        return false
+
     }
     @objc func addToFavorites(){
         if !CoreDataManager.shared.doesLeagueExist(leagueName: viewModel!.leagueNum){

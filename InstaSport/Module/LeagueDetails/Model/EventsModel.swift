@@ -12,6 +12,8 @@ struct EventResult: Decodable {
 }
 struct EventModel: Decodable {
     let eventKey: Int
+    let homeTeamKey:Int
+    let awayTeamKey:Int
     let eventDate, eventTime, eventHomeTeam: String
     let eventAwayTeam: String
     let eventHalftimeResult: String
@@ -34,6 +36,8 @@ struct EventModel: Decodable {
         self.eventStadium = try container.decode(String.self, forKey: .eventStadium)
         self.homeTeamLogo = try container.decodeIfPresent(String.self, forKey: .homeTeamLogo)
         self.awayTeamLogo = try container.decodeIfPresent(String.self, forKey: .awayTeamLogo)
+        self.homeTeamKey = try container.decode(Int.self, forKey: .homeTeamKey)
+        self.awayTeamKey = try container.decode(Int.self, forKey: .awayTeamKey)
     }
     enum CodingKeys: String, CodingKey {
         case eventKey = "event_key"
@@ -49,5 +53,7 @@ struct EventModel: Decodable {
         case eventStadium = "event_stadium"
         case homeTeamLogo = "home_team_logo"
         case awayTeamLogo = "away_team_logo"
+        case homeTeamKey = "home_team_key"
+        case awayTeamKey = "away_team_key"
     }
 }
