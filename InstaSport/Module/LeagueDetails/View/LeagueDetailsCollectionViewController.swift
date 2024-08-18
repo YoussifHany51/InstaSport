@@ -90,7 +90,14 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
         }
         //cell.imgView
     }
-    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 2{
+            let VC = self.storyboard?.instantiateViewController(withIdentifier: "TeamDetailsCollectionViewController")as! TeamDetailsCollectionViewController
+            VC.viewModel=TeamDetailsViewModel(teamKey: viewModel!.arrTeams[indexPath.row].teamKey, sport: viewModel!.sport)
+            //self.navigationController?.pushViewController(VC, animated: true)
+            self.present(VC, animated: true)
+        }
+    }
     func drawFirstCollection() -> NSCollectionLayoutSection{
         // gave the item in group the full size of it
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
