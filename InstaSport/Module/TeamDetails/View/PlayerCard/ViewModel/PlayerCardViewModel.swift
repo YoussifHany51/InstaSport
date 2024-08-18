@@ -6,3 +6,10 @@
 //
 
 import Foundation
+class PlayerCardViewModel{
+    var player:Player
+    
+    init(player: Player) {
+        self.player = player
+    }
+}
