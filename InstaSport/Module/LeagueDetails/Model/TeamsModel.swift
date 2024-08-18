@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct TeamsSet:Hashable{
+struct TeamsModel:Hashable{
     let imgUrl:String
     let teamKey:String
     let teamName:String
@@ -15,7 +15,7 @@ struct TeamsSet:Hashable{
         self.teamKey = teamKey
         self.teamName = teamName
     }
-    static func == (lhs: TeamsSet, rhs: TeamsSet) -> Bool {
+    static func == (lhs: TeamsModel, rhs: TeamsModel) -> Bool {
             return lhs.teamKey == rhs.teamKey
         }
     func hash(into hasher: inout Hasher) {
