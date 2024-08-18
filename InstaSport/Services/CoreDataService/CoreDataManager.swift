@@ -6,32 +6,70 @@
 //
 
 import CoreData
+import UIKit
 
 class CoreDataManager {
-static let shared = CoreDataManager()
-
-    let persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "FavoriteLeagueModel") 
-        container.loadPersistentStores { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
+    static let shared = CoreDataManager()
+    
+    private init() {}
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    func saveLeague(_ league: LeagueModel) {
+        let leagueEntity = LeagueCD(context: context)
+        leagueEntity.leagueKey = Int32(league.leagueKey)
+        leagueEntity.leagueName = league.leagueName
+        leagueEntity.leagueLogo = league.leagueLogo
+        leagueEntity.leagueUrl = league.leagueUrl
+        
+        do {
+            try context.save()
+            print("League saved successfully.")
+        } catch {
+            print("Failed to save league: \(error.localizedDescription)")
         }
-        return container
-    }()
-
-    var context: NSManagedObjectContext {
-        return persistentContainer.viewContext
     }
+    
+    func fetchSavedLeagues() -> [LeagueCD] {
+        let fetchRequest: NSFetchRequest<LeagueCD> = LeagueCD.fetchRequest()
+        
+        do {
+            let leagues = try context.fetch(fetchRequest)
+            return leagues
+        } catch {
+            print("Failed to fetch leagues: \(error.localizedDescription)")
+            return []
+        }
+    }
+    func doesLeagueExist(leagueName: String) -> Bool {
+        let fetchRequest: NSFetchRequest<LeagueCD> = LeagueCD.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "leagueName == %@", leagueName)
+        fetchRequest.fetchLimit = 1
+        
+        do {
+            let count = try context.count(for: fetchRequest)
+            return count > 0
+        } catch {
+            print("Failed to check if league exists: \(error.localizedDescription)")
+            return false
+        }
+    }
+    func removeLeague(leagueKey: Int) {
+        let fetchRequest: NSFetchRequest<LeagueCD> = LeagueCD.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "leagueKey == %d", leagueKey)
+        fetchRequest.fetchLimit = 1
 
-    func saveContext() {
-        if context.hasChanges {
-            do {
+        do {
+            let leagues = try context.fetch(fetchRequest)
+            if let leagueToRemove = leagues.first {
+                context.delete(leagueToRemove)
                 try context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                print("League removed successfully.")
+            } else {
+                print("League not found.")
             }
+        } catch {
+            print("Failed to remove league: \(error.localizedDescription)")
         }
     }
 }

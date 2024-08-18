@@ -194,6 +194,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Favorite" image="star" catalog="system" id="qq8-Ij-P3a"/>
+                    <connections>
+                        <outlet property="favoriteTableView" destination="GFT-7x-RuQ" id="iDD-Xv-WSU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvs-jg-qQR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
