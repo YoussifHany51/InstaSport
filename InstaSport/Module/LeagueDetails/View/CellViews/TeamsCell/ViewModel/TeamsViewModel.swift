@@ -6,3 +6,11 @@
 //
 
 import Foundation
+class TeamsViewModel{
+    var obj : TeamsModel
+    
+    init(obj:TeamsModel){
+        self.obj=obj
+    }
+    
+}
