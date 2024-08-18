@@ -12,9 +12,11 @@ class LeagueDetailsViewModel{
     var arrlastEvent : [EventModel] = []
     var leagueNum:String
     var sport:Sports
-    init(sport:Sports,leagueNum:String){
+    var league:LeagueModel
+    init(sport:Sports,leagueNum:String,league:LeagueModel){
         self.sport=sport
         self.leagueNum=leagueNum
+        self.league = league
         //getData()
     }
     func getData(_ handler:@escaping()->Void){

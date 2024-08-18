@@ -70,7 +70,7 @@ class LeaguesTableViewController: UITableViewController {
             if let destination = segue.destination as? LeagueDetailsCollectionViewController{
                 if let indexPath = self.leaguesTableView.indexPathForSelectedRow{
                     let str = "\(viewModel!.arrayOfLeagues[indexPath.row].leagueKey)"
-                    destination.viewModel = LeagueDetailsViewModel(sport: sport!, leagueNum: str)
+                    destination.viewModel = LeagueDetailsViewModel(sport: sport!, leagueNum: str,league: arryOfLeagues![indexPath.row])
                 }
             }
         }

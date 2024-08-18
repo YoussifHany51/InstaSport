@@ -26,30 +26,13 @@ class LeaguesTableViewCell: UITableViewCell {
     }
     
     @IBAction func leagueYoutubeBtn(_ sender: Any) {
-        print(leagueCell?.leagueUrl ?? "")
-        let str = "https://www.youtube.com/@\(String(describing: leagueCell?.leagueName))"
-        //let youtubeURL = leagueCell?.leagueUrl
         DispatchQueue.main.async {
             self.openYouTube()
         }
     }
     
-    var leagueCell : LeagueModel?{
-        didSet{
-            guard let leagueCell = leagueCell else{return}
-            leagueImageLabel.kf.indicatorType = .activity
-            leagueImageLabel.kf.setImage(with: URL(string: leagueCell.leagueLogo ?? "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png"))
-            leagueTitleLabel.text = leagueCell.leagueName
-        }
-    }
-    
     func openYouTube() {
-        let appUrl = URL(string: "youtube://app")
-        if UIApplication.shared.canOpenURL(appUrl! as URL) {
-            UIApplication.shared.open(appUrl!)
-        } else {
-            UIApplication.shared.open(URL(string: ("https://www.youtube.com/@\(String(describing: leagueTitleLabel.text))"))!, options: [:], completionHandler: nil)
-        }
+        UIApplication.shared.open(URL(string: ("https://www.youtube.com/@\(String(describing: leagueTitleLabel.text))"))!, options: [:], completionHandler: nil)
     }
 
     func setRoundedForImgCell(myImg : UIImageView){
@@ -73,8 +56,6 @@ class LeaguesTableViewCell: UITableViewCell {
     }
     
     func setUpLeagueCell(title:String,photo:String,check:Bool){
-        
-
         if check{
             if let url = URL(string: photo){
                 leagueImageLabel.kf.setImage(with: url)
@@ -82,8 +63,6 @@ class LeaguesTableViewCell: UITableViewCell {
         }else{
             leagueImageLabel.image=UIImage(named: photo)
         }
-        
-        
         leagueTitleLabel.text = title
     }
 }

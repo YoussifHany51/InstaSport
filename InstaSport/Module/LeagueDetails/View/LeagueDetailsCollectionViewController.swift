@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 
 
@@ -31,7 +32,7 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
             }
         }
         self.collectionView.setCollectionViewLayout(compositionalLayout, animated: true)
-        
+        self.setupFavoriteButton()
     }
     //func
 
@@ -123,35 +124,28 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
         section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 5, bottom: 20, trailing: 5)
         return section
     }
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+    func setupFavoriteButton() {
+        
+        let favoriteButton = UIBarButtonItem(
+            image:CoreDataManager.shared.doesLeagueExist(leagueName: viewModel!.leagueNum) ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"),
+            style: .plain,
+            target: self,
+            action: #selector(addToFavorites)
+        )
+        
+        navigationItem.rightBarButtonItem = favoriteButton
     }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
+    @objc func addToFavorites(){
+        if !CoreDataManager.shared.doesLeagueExist(leagueName: viewModel!.leagueNum){
+            showAlert()
+        }else{
+            CoreDataManager.shared.saveLeague(viewModel!.league)
+        }
     }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
+    func showAlert(){
+        let alert = UIAlertController(title: "Already in Favorite", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert,animated: true)
     }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }
