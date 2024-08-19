@@ -33,3 +33,11 @@ struct LeagueModel: Codable {
         self.leagueUrl = "https://www.youtube.com/@\(leagueName)"
     }
 }
+extension LeagueModel {
+    init(from leagueCD: LeagueCD) {
+        self.leagueKey = Int(leagueCD.leagueKey)
+        self.leagueName = leagueCD.leagueName ?? ""
+        self.leagueLogo = leagueCD.leagueLogo
+        self.leagueUrl = leagueCD.leagueUrl
+    }
+}

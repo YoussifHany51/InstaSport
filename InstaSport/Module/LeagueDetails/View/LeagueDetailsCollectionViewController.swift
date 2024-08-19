@@ -142,61 +142,47 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
     }
 
     func setupFavoriteButton() {
-        
+        let isFavorite = CoreDataManager.shared.isFavorite(league: viewModel!.league,
+                                                           arrayOfLeagues: CoreDataManager.shared.fetchSavedLeagues())
         let favoriteButton = UIBarButtonItem(
-            image:CoreDataManager.shared.doesLeagueExist(leagueName: viewModel!.leagueNum) ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"),
+            image: isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"),
             style: .plain,
             target: self,
             action: #selector(addToFavorites)
         )
         
         navigationItem.rightBarButtonItem = favoriteButton
-
-    
-    func drawThirdCollection() -> NSCollectionLayoutSection{
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .absolute(100))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets =   NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5)
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = NSDirectionalEdgeInsets(top: 30, leading: 5, bottom: 5, trailing: 0)
-        return section
     }
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
+        
+        func drawThirdCollection() -> NSCollectionLayoutSection{
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .absolute(100))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            group.contentInsets =   NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5)
+            let section = NSCollectionLayoutSection(group: group)
+            section.orthogonalScrollingBehavior = .continuous
+            section.contentInsets = NSDirectionalEdgeInsets(top: 30, leading: 5, bottom: 5, trailing: 0)
+            return section
+        }
+        // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-
-    }
+            return false
+            
+        }
     @objc func addToFavorites(){
-        if !CoreDataManager.shared.doesLeagueExist(leagueName: viewModel!.leagueNum){
-            showAlert()
-        }else{
-            CoreDataManager.shared.saveLeague(viewModel!.league)
+        if CoreDataManager.shared.isFavorite(league: viewModel!.league,
+                                                 arrayOfLeagues: CoreDataManager.shared.fetchSavedLeagues()){
+                showAlert()
+            }else{
+                CoreDataManager.shared.saveLeague(viewModel!.league)
+            }
+        }
+        func showAlert(){
+            let alert = UIAlertController(title: "Already in Favorite", message: "", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert,animated: true)
         }
     }
-    func showAlert(){
-        let alert = UIAlertController(title: "Already in Favorite", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
-        alert.addAction(action)
-        self.present(alert,animated: true)
-    }
-}
+

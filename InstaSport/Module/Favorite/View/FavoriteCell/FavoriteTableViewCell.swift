@@ -40,7 +40,10 @@ class FavoriteTableViewCell: UITableViewCell {
     }
     
     func openYouTube() {
-        UIApplication.shared.open(URL(string: ("https://www.youtube.com/@\(String(describing: favoriteLabel.text))"))!, options: [:], completionHandler: nil)
+        var str = favoriteLabel.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        str = str.replacingOccurrences(of: " ", with: "")
+        print("\(str)")
+        UIApplication.shared.open(URL(string: ("https://www.youtube.com/@\(str)"))!, options: [:], completionHandler: nil)
     }
 
     func setRoundedForImgCell(myImg : UIImageView){
