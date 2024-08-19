@@ -141,7 +141,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="LeagueDetailsCollectionViewController" id="bU7-Qp-JPi" customClass="LeagueDetailsCollectionViewController" customModule="InstaSport" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="XzI-r8-Ye2">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ggB-5O-VqC">
@@ -226,7 +226,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jZV-MB-YJu"/>
+        <segue reference="LZn-xF-8Hh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="figure.disc.sports" catalog="system" width="128" height="108"/>
