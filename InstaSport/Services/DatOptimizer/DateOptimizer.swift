@@ -20,7 +20,7 @@ class DateOptimizer{
     static var oneYearAfter:String{
         let currentDate = Date()
         // Use Calendar to add one year to the current date
-        let oneYearAfter = Calendar.current.date(byAdding: .month, value: 2, to: currentDate)!
+        let oneYearAfter = Calendar.current.date(byAdding: .month, value: 1, to: currentDate)!
         // Create a DateFormatter instance
         let dateFormatter = DateFormatter()
         // Set the date format to "yyyy-MM-dd"
@@ -32,7 +32,7 @@ class DateOptimizer{
     static var oneYearBefore:String {
         let currentDate = Date()
         // Use Calendar to add one year to the current date
-        let oneYearBefore = Calendar.current.date(byAdding: .month, value: -2, to: currentDate)!
+        let oneYearBefore = Calendar.current.date(byAdding: .month, value: -1, to: currentDate)!
         // Create a DateFormatter instance
         let dateFormatter = DateFormatter()
         // Set the date format to "yyyy-MM-dd"

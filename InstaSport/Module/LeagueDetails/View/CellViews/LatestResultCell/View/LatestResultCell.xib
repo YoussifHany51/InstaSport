@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKy-ep-uy8">
-                        <rect key="frame" x="242.00000000000003" y="69.333333333333329" width="86.333333333333343" height="22.333333333333329"/>
+                        <rect key="frame" x="242.00000000000003" y="76.666666666666671" width="86.333333333333343" height="22.333333333333329"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                         <rect key="frame" x="379.33333333333331" y="30" width="170.66666666666669" height="161.33333333333334"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EventTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bib-TA-Pkg">
-                        <rect key="frame" x="243.33333333333334" y="101.66666666666667" width="83.666666666666657" height="22.333333333333329"/>
+                        <rect key="frame" x="243.33333333333334" y="109" width="83.666666666666657" height="22.333333333333343"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -56,8 +56,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hon-YW-QsT">
-                        <rect key="frame" x="245" y="134" width="80" height="43"/>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                        <rect key="frame" x="259" y="141.33333333333334" width="52" height="28.333333333333343"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>

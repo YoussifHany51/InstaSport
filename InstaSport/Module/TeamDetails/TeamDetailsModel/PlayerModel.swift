@@ -11,7 +11,7 @@ struct Player: Codable {
     let playerKey: Int
     let playerImage: String?
     let playerName, playerNumber: String
-    let playerCountry: JSONNull?
+    let playerCountry: String?
     let playerType: PlayerType
     let playerAge: String
     let playerRating: String
@@ -34,7 +34,7 @@ struct Player: Codable {
         self.playerImage = try container.decodeIfPresent(String.self, forKey: .playerImage)
         self.playerName = try container.decode(String.self, forKey: .playerName)
         self.playerNumber = try container.decode(String.self, forKey: .playerNumber)
-        self.playerCountry = try container.decodeIfPresent(JSONNull.self, forKey: .playerCountry)
+        self.playerCountry = try container.decodeIfPresent(String.self, forKey: .playerCountry)
         self.playerType = try container.decode(PlayerType.self, forKey: .playerType)
         self.playerAge = try container.decode(String.self, forKey: .playerAge)
         self.playerRating = try container.decode(String.self, forKey: .playerRating)

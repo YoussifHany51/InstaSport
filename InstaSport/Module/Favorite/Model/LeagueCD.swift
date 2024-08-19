@@ -6,7 +6,8 @@
 //
 
 import Foundation
-var leagueKey : Int32?
-var leagueName : String?
-var leagueLogo : String?
-var leagueUrl : String?
+
+//var leagueKey : Int32?
+//var leagueName : String?
+//var leagueLogo : String?
+//var leagueUrl : String?

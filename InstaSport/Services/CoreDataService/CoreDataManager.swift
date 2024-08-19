@@ -20,7 +20,7 @@ class CoreDataManager {
         leagueEntity.leagueKey = Int32(league.leagueKey)
         leagueEntity.leagueName = league.leagueName
         leagueEntity.leagueLogo = league.leagueLogo
-        leagueEntity.leagueUrl = league.leagueUrl
+        leagueEntity.leagueUrl = Converter.convertingImgToStr(img: league.leagueLogo!)
         
         do {
             try context.save()

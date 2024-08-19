@@ -48,7 +48,7 @@
             </objects>
             <point key="canvasLocation" x="1966" y="-785"/>
         </scene>
-        <!--Leagues Table View Controller-->
+        <!--AllLeagues-->
         <scene sceneID="PV7-ui-fDM">
             <objects>
                 <tableViewController storyboardIdentifier="LeaguesTableViewController" id="xyx-A5-3EO" customClass="LeaguesTableViewController" customModule="InstaSport" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,6 +69,7 @@
                             <outlet property="delegate" destination="xyx-A5-3EO" id="IYj-3P-9Co"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="AllLeagues" image="star.circle.fill" catalog="system" id="85S-Ev-eZM"/>
                     <navigationItem key="navigationItem" id="Xry-5r-nki"/>
                     <connections>
                         <outlet property="leaguesTableView" destination="9Br-WA-Spk" id="EQz-Hq-YOk"/>
@@ -78,7 +79,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeL-DM-1mS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3207" y="-785"/>
+            <point key="canvasLocation" x="3207" y="-758"/>
         </scene>
         <!--Team Details Collection View Controller-->
         <scene sceneID="cko-BM-BJp">
@@ -150,7 +151,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="LeagueDetailsCollectionViewController" id="bU7-Qp-JPi" customClass="LeagueDetailsCollectionViewController" customModule="InstaSport" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="XzI-r8-Ye2">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ggB-5O-VqC">
@@ -184,7 +185,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="xVT-uq-oai"/>
-                        <segue destination="mAN-n7-PJg" kind="relationship" relationship="viewControllers" id="8o0-dt-kQ7"/>
+                        <segue destination="xyx-A5-3EO" kind="relationship" relationship="viewControllers" id="mue-LX-bMR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHF-QA-QvC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -212,7 +213,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvs-jg-qQR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1948" y="-56"/>
+            <point key="canvasLocation" x="2092" y="188"/>
         </scene>
         <!--All Sports-->
         <scene sceneID="a3t-F1-PLh">
@@ -240,6 +241,7 @@
     <resources>
         <image name="figure.disc.sports" catalog="system" width="128" height="108"/>
         <image name="star" catalog="system" width="128" height="116"/>
+        <image name="star.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
