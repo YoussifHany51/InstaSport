@@ -28,7 +28,7 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
             }
             else if index == 1 {
                 return self.drawSecondCollection()
-
+                
             }else{
                 return self.drawThirdCollection()
             }
@@ -37,25 +37,25 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
         self.setupFavoriteButton()
     }
     //func
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using [segue destinationViewController].
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     // MARK: UICollectionViewDataSource
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 3
     }
-
-
+    
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         if section == 0{
@@ -68,7 +68,7 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
         }
         
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //var cell : UICollectionViewCell?
         if indexPath.section == 0{
@@ -114,13 +114,13 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
         section.contentInsets = NSDirectionalEdgeInsets(top: 50, leading: 5, bottom: 5, trailing: 5)
         // animation
         section.visibleItemsInvalidationHandler = { (items, offset, environment) in
-        items.forEach { item in
-        let distanceFromCenter = abs((item.frame.midX - offset.x) - environment.container.contentSize.width / 2.0)
-        let minScale: CGFloat = 0.8
-        let maxScale: CGFloat = 1.0
-        let scale = max(maxScale - (distanceFromCenter / environment.container.contentSize.width), minScale)
-        item.transform = CGAffineTransform(scaleX: scale, y: scale)
-        }
+            items.forEach { item in
+                let distanceFromCenter = abs((item.frame.midX - offset.x) - environment.container.contentSize.width / 2.0)
+                let minScale: CGFloat = 0.8
+                let maxScale: CGFloat = 1.0
+                let scale = max(maxScale - (distanceFromCenter / environment.container.contentSize.width), minScale)
+                item.transform = CGAffineTransform(scaleX: scale, y: scale)
+            }
         }
         return section
     }
@@ -140,7 +140,7 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
         section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 5, bottom: 20, trailing: 5)
         return section
     }
-
+    
     func setupFavoriteButton() {
         
         let favoriteButton = UIBarButtonItem(
@@ -151,18 +151,32 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
         )
         
         navigationItem.rightBarButtonItem = favoriteButton
-
-    
-    func drawThirdCollection() -> NSCollectionLayoutSection{
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .absolute(100))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets =   NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5)
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = NSDirectionalEdgeInsets(top: 30, leading: 5, bottom: 5, trailing: 0)
-        return section
+    }
+        
+        func drawThirdCollection() -> NSCollectionLayoutSection{
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .absolute(100))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            group.contentInsets =   NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5)
+            let section = NSCollectionLayoutSection(group: group)
+            section.orthogonalScrollingBehavior = .continuous
+            section.contentInsets = NSDirectionalEdgeInsets(top: 30, leading: 5, bottom: 5, trailing: 0)
+            return section
+        }
+    @objc func addToFavorites(){
+            if !CoreDataManager.shared.doesLeagueExist(leagueName: viewModel!.leagueNum){
+                showAlert()
+            }else{
+                CoreDataManager.shared.saveLeague(viewModel!.league)
+            }
+        }
+        func showAlert(){
+            let alert = UIAlertController(title: "Already in Favorite", message: "", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert,animated: true)
+        }
     }
     // MARK: UICollectionViewDelegate
 
@@ -180,23 +194,12 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
     }
     */
 
-    /*
+    
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
+//    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+//        return false
+//
+//    }
+//    
+//}
 
-    }
-    @objc func addToFavorites(){
-        if !CoreDataManager.shared.doesLeagueExist(leagueName: viewModel!.leagueNum){
-            showAlert()
-        }else{
-            CoreDataManager.shared.saveLeague(viewModel!.league)
-        }
-    }
-    func showAlert(){
-        let alert = UIAlertController(title: "Already in Favorite", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
-        alert.addAction(action)
-        self.present(alert,animated: true)
-    }
-}
