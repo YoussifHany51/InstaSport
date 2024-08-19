@@ -75,21 +75,33 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
             let cell = collectionView.deque(cell: UpComingEventCell.self)
             cell.viewModel = UpComingEventViewModel(obj: viewModel!.arrUpComingEvents[indexPath.row])
             cell.putData()
+            cell.layer.cornerRadius = 10
+            
             return cell
         }
         else if indexPath.section == 1 {
             let cell = collectionView.deque(cell: LatestResultCell.self)
             cell.viewModel = LatestResultViewModel(obj: viewModel!.arrlastEvent[indexPath.row])
             cell.putData()
+            cell.layer.cornerRadius = 10
+
             return cell
             
         }else{
             let cell = collectionView.deque(cell: TeamsCell.self)
             cell.viewModel = TeamsViewModel(obj: viewModel!.arrTeams[indexPath.row])
             cell.putData()
+            cell.layer.cornerRadius = 10
+
             return cell
         }
         //cell.imgView
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 2{
@@ -127,13 +139,14 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
     
     func drawSecondCollection() -> NSCollectionLayoutSection{
         // gave the item in group the full size of it
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.25))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.33))
         // create the item itself
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         // create the group
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.75))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        group.contentInsets =   NSDirectionalEdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0)
+        group.contentInsets =   NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         // create a section
         let section = NSCollectionLayoutSection(group: group)
         //section.orthogonalScrollingBehavior = .continuous
@@ -157,7 +170,7 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
         func drawThirdCollection() -> NSCollectionLayoutSection{
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .absolute(100))
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .absolute(120))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
             group.contentInsets =   NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5)
             let section = NSCollectionLayoutSection(group: group)

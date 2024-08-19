@@ -16,12 +16,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="142" height="163"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chelsea" translatesAutoresizingMaskIntoConstraints="NO" id="hF8-aI-JHt">
-                        <rect key="frame" x="0.0" y="5" width="142" height="133.33333333333334"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chelsea" translatesAutoresizingMaskIntoConstraints="NO" id="hF8-aI-JHt">
+                        <rect key="frame" x="21.333333333333336" y="5" width="99.333333333333314" height="114"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chelse" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h01-3z-MMo">
-                        <rect key="frame" x="5" y="142" width="132" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="5" y="125.66666666666667" width="132" height="37.333333333333329"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -30,12 +30,14 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" white="0.89887502080000004" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="h01-3z-MMo" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" constant="34" id="1hR-T8-RrR"/>
                 <constraint firstItem="h01-3z-MMo" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="86X-gz-9jX"/>
-                <constraint firstItem="hF8-aI-JHt" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="CDF-t5-vbZ"/>
+                <constraint firstItem="hF8-aI-JHt" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.7" id="CDF-t5-vbZ"/>
+                <constraint firstItem="h01-3z-MMo" firstAttribute="top" secondItem="hF8-aI-JHt" secondAttribute="bottom" constant="6.6666666666666572" id="Di1-om-Pq9"/>
                 <constraint firstItem="hF8-aI-JHt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="DrS-xb-5LU"/>
                 <constraint firstAttribute="trailing" secondItem="h01-3z-MMo" secondAttribute="trailing" constant="5" id="N4K-38-ZbY"/>
                 <constraint firstItem="h01-3z-MMo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="bLD-xT-RCG"/>
-                <constraint firstItem="hF8-aI-JHt" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.819" id="fAH-aS-ahu"/>
+                <constraint firstItem="hF8-aI-JHt" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.7" id="fAH-aS-ahu"/>
                 <constraint firstAttribute="bottom" secondItem="h01-3z-MMo" secondAttribute="bottom" id="hCH-fa-yIz"/>
                 <constraint firstItem="hF8-aI-JHt" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="mQZ-BS-E4m"/>
             </constraints>

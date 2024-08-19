@@ -19,5 +19,6 @@ class AllSportsCollectionViewCell: UICollectionViewCell {
     func setUpAllSportsCell(photo:UIImage,title:String){
         allSportsTitleLabel.text = title
         allSportImageLabel.image = photo
+        allSportImageLabel.layer.cornerRadius = 10
     }
 }

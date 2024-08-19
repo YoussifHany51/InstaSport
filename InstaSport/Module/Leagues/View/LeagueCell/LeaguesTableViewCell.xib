@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vN2-yt-SV2">
-                        <rect key="frame" x="0.0" y="27.333333333333332" width="54.333333333333336" height="51.333333333333343"/>
+                        <rect key="frame" x="20.000000000000004" y="27.333333333333332" width="54.333333333333343" height="51.333333333333343"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="vN2-yt-SV2" secondAttribute="height" multiplier="18:17" id="7ZZ-D6-qSr"/>
                             <constraint firstAttribute="height" constant="51.18" id="MrI-wA-MFC"/>
@@ -26,13 +26,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdP-GQ-rbX">
-                        <rect key="frame" x="62.333333333333329" y="42.666666666666664" width="41.333333333333329" height="21"/>
+                        <rect key="frame" x="82.333333333333329" y="42.666666666666664" width="41.333333333333329" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u68-61-aUU">
-                        <rect key="frame" x="270" y="35" width="50" height="36"/>
+                        <rect key="frame" x="250" y="35" width="50" height="36"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="u68-61-aUU" secondAttribute="height" multiplier="25:18" id="2V7-Xa-XEk"/>
                             <constraint firstAttribute="width" constant="50" id="vBf-fC-pEI"/>
@@ -46,10 +46,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="CdP-GQ-rbX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8L5-PQ-sv2"/>
-                    <constraint firstItem="vN2-yt-SV2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="EFk-vV-EA9"/>
+                    <constraint firstItem="vN2-yt-SV2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="EFk-vV-EA9"/>
                     <constraint firstItem="u68-61-aUU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Gex-0r-ytb"/>
                     <constraint firstItem="u68-61-aUU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="35" id="TUi-on-8da"/>
-                    <constraint firstAttribute="trailing" secondItem="u68-61-aUU" secondAttribute="trailing" id="dgV-Oy-YQl"/>
+                    <constraint firstAttribute="trailing" secondItem="u68-61-aUU" secondAttribute="trailing" constant="20" id="dgV-Oy-YQl"/>
                     <constraint firstItem="CdP-GQ-rbX" firstAttribute="leading" secondItem="vN2-yt-SV2" secondAttribute="trailing" constant="8" id="i4W-FT-Rh3"/>
                     <constraint firstItem="vN2-yt-SV2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="oKb-1I-ktv"/>
                 </constraints>

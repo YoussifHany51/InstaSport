@@ -29,20 +29,29 @@ class AllSportsViewController: UIViewController,UICollectionViewDelegate,UIColle
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "allSportsCell", for: indexPath) as! AllSportsCollectionViewCell
         let sport = arryOfSports[indexPath.row]
         cell.setUpAllSportsCell(photo: sport.image, title: sport.title)
-        cell.backgroundColor = .lightGray
+//        cell.backgroundColor = .lightGray
+        cell.backgroundColor = .darkGray
+        cell.backgroundColor = cell.backgroundColor?.withAlphaComponent(0.2)
+        cell.layer.cornerRadius = 10
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width * 0.499, height: self.view.frame.height * 0.20)
+        let spacing: CGFloat = 10 
+
+        let width = (self.view.frame.width - spacing) / 2 - spacing
+        let height = self.view.frame.height * 0.20
+        return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.1
+        return 10
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.1
+        return 10
     }
+  
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LeaguesTableViewController") as! LeaguesTableViewController
         vc.sport = arryOfSports[indexPath.row].sportEnum

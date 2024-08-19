@@ -8,6 +8,7 @@
 import UIKit
 
 class LeaguesTableViewController: UITableViewController {
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var leaguesTableView: UITableView!
     var arryOfLeagues : [LeagueModel]?
     var viewModel:LeaguesViewModel?
@@ -49,6 +50,7 @@ class LeaguesTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "leaguesCell", for: indexPath) as! LeaguesTableViewCell
+        cell.layer.cornerRadius = 10
         let obj = arryOfLeagues![indexPath.row]
         let check = obj.leagueLogo == nil ? false : true
         switch(sport){
