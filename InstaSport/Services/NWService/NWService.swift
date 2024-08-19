@@ -28,7 +28,6 @@ class NWService{
         AF.request(fullURL,method: .get,parameters: param,encoding: URLEncoding.default,headers: nil,interceptor: nil).response { response in
             switch response.result{
             case .success(let data):print("Fetch Teams Details data success")
-                print(data)
                 handler(data!)
             case .failure(let error):print("Error in fetching data\(error.localizedDescription)")
             }

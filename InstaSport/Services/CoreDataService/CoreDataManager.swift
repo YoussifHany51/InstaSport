@@ -41,19 +41,6 @@ class CoreDataManager {
             return []
         }
     }
-    func doesLeagueExist(leagueName: String) -> Bool {
-        let fetchRequest: NSFetchRequest<LeagueCD> = LeagueCD.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "leagueName == %@", leagueName)
-        fetchRequest.fetchLimit = 1
-        
-        do {
-            let count = try context.count(for: fetchRequest)
-            return count > 0
-        } catch {
-            print("Failed to check if league exists: \(error.localizedDescription)")
-            return false
-        }
-    }
     func removeLeague(leagueKey: Int) {
         let fetchRequest: NSFetchRequest<LeagueCD> = LeagueCD.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "leagueKey == %d", leagueKey)
@@ -71,5 +58,16 @@ class CoreDataManager {
         } catch {
             print("Failed to remove league: \(error.localizedDescription)")
         }
+    }
+    func isFavorite(league:LeagueModel,arrayOfLeagues:[LeagueCD])->Bool{
+        var result = false
+        for leagueInArray in arrayOfLeagues {
+            if (league.leagueName == leagueInArray.leagueName){
+                result = true
+            }else{
+                result = false
+            }
+        }
+        return result
     }
 }

@@ -54,12 +54,45 @@ class FavoriteTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let selectedLeague = arrayOfFavorite[indexPath.row]
-        CoreDataManager.shared.removeLeague(leagueKey: Int(selectedLeague.leagueKey))
-        arrayOfFavorite.remove(at: indexPath.row)
-        favoriteTableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        let alert = UIAlertController(title: "Caution", message: "Are you sure ?", preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "Confirm", style: .destructive) {[weak self] _ in
+            let selectedLeague = self?.arrayOfFavorite[indexPath.row]
+            CoreDataManager.shared.removeLeague(leagueKey: Int(selectedLeague!.leagueKey))
+            self?.arrayOfFavorite.remove(at: indexPath.row)
+            self?.favoriteTableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(confirm)
+        alert.addAction(cancel)
+        self.present(alert, animated: true)
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 108
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "pushToDetails", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if NetworkConnectionManager.shared.isConnected{
+            if segue.identifier == "pushToDetails"{
+                if let destination = segue.destination as? LeagueDetailsCollectionViewController{
+                    if let indexPath = self.favoriteTableView.indexPathForSelectedRow{
+                        let leagueCD = arrayOfFavorite[indexPath.row]
+                        let leagueModel = LeagueModel(from: leagueCD)
+                        let str = "\(leagueModel.leagueKey)"
+                        destination.viewModel = LeagueDetailsViewModel(sport: sport ?? .football, leagueNum: str,league: leagueModel)
+                    }
+                }
+            }
+        }else{
+            showNetworkAlert()
+        }
+    }
+    func showNetworkAlert(){
+        let alert = UIAlertController(title: "Ops ☹️", message: "Network Error", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true)
     }
 }

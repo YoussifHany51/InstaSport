@@ -61,6 +61,7 @@
                             <outlet property="delegate" destination="xyx-A5-3EO" id="IYj-3P-9Co"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Xry-5r-nki"/>
                     <connections>
                         <outlet property="leaguesTableView" destination="9Br-WA-Spk" id="EQz-Hq-YOk"/>
                         <segue destination="bU7-Qp-JPi" kind="show" identifier="pushView" id="LZn-xF-8Hh"/>
@@ -129,6 +130,7 @@
                             <outlet property="delegate" destination="h4b-q6-wfY" id="o12-ED-TVj"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="UQn-Ye-7Mh"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1wL-3p-2jW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -139,7 +141,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="LeagueDetailsCollectionViewController" id="bU7-Qp-JPi" customClass="LeagueDetailsCollectionViewController" customModule="InstaSport" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="XzI-r8-Ye2">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ggB-5O-VqC">
@@ -196,6 +198,7 @@
                     <tabBarItem key="tabBarItem" title="Favorite" image="star" catalog="system" id="qq8-Ij-P3a"/>
                     <connections>
                         <outlet property="favoriteTableView" destination="GFT-7x-RuQ" id="iDD-Xv-WSU"/>
+                        <segue destination="bU7-Qp-JPi" kind="show" identifier="pushToDetails" id="jZV-MB-YJu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvs-jg-qQR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -222,6 +225,9 @@
             <point key="canvasLocation" x="1146" y="-1080"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jZV-MB-YJu"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="figure.disc.sports" catalog="system" width="128" height="108"/>
         <image name="star" catalog="system" width="128" height="116"/>
