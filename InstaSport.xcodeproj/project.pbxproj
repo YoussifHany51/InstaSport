@@ -177,6 +177,32 @@
 			path = CoreDataService;
 			sourceTree = "<group>";
 		};
+
+		09A601F82C6D1EF000F036AE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09DDFFFF2C71016E006CC9C6 /* FavoriteTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09A601F92C6D1EF700F036AE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				09A601FA2C6D1F1000F036AE /* FavoriteViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		09A601FC2C6D1FAA00F036AE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				09F6EF612C722969001B1BFA /* LeagueCD.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+
 		09A601FF2C6D2CFC00F036AE /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,7 +501,9 @@
 		3C0425B02C6FEC3700F6FDE5 /* InstaSportTests */ = {
 			isa = PBXGroup;
 			children = (
+
 				3C25D9662C750DFB0059F449 /* ViewModelsTest */,
+
 				09BB8E442C74CFDF009172C0 /* ServiceTesting */,
 				3C0425B12C6FEC3700F6FDE5 /* InstaSportTests.swift */,
 			);
@@ -813,14 +841,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				09BB8E502C74D2DE009172C0 /* DataParserTests.swift in Sources */,
+
 				3C25D9672C750DFB0059F449 /* LeagueDetailsVMTest.swift in Sources */,
-				09BB8E4E2C74D2C5009172C0 /* NWServiceTests.swift in Sources */,
 				3C25D9682C750DFB0059F449 /* LeagueVMTest.swift in Sources */,
+
+				09BB8E4E2C74D2C5009172C0 /* NWServiceTests.swift in Sources */,
+
 				09BB8E462C74D088009172C0 /* NWParamtersTests.swift in Sources */,
 				3C0425B22C6FEC3700F6FDE5 /* InstaSportTests.swift in Sources */,
 				09BB8E4C2C74D17B009172C0 /* CoreDataManagerTests.swift in Sources */,
 				09BB8E482C74D0ED009172C0 /* DateOptimizerTests.swift in Sources */,
+
 				3C25D9692C750DFB0059F449 /* TeamDetailsVMTest.swift in Sources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
