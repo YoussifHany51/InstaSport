@@ -14,10 +14,10 @@ struct LeagueResult: Codable{
 
 // MARK: - Result
 struct LeagueModel: Codable {
-    let leagueKey: Int
-    let leagueName: String
-    let leagueLogo: String?
-    let leagueUrl: String?
+    var leagueKey: Int
+    var leagueName: String
+    var leagueLogo: String?
+    var leagueUrl: String?
 
     enum CodingKeys: String, CodingKey {
         case leagueKey = "league_key"
@@ -37,6 +37,12 @@ struct LeagueModel: Codable {
         self.leagueName = try container.decode(String.self, forKey: .leagueName)
         self.leagueLogo = try container.decodeIfPresent(String.self, forKey: .leagueLogo)
         self.leagueUrl = "https://www.youtube.com/@\(leagueName)"
+    }
+    init(leagueKey:Int,leagueName:String,leagueLogo:String,leagueUrl:String){
+        self.leagueKey=leagueKey
+        self.leagueName=leagueName
+        self.leagueLogo=leagueLogo
+        self.leagueUrl=leagueUrl
     }
 }
 

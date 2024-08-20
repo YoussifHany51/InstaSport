@@ -11,9 +11,12 @@ import UIKit
 class CoreDataManager {
     static let shared = CoreDataManager()
     
-    private init() {}
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var context: NSManagedObjectContext
+
+        // Use dependency injection for the context (for testing)
+        init(context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext) {
+            self.context = context
+        }
     
     func saveLeague(_ league: LeagueModel,sport:Sports) {
         let leagueEntity = LeagueCD(context: context)
