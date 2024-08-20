@@ -20,6 +20,11 @@ class LeagueDetailsViewModel{
         self.league = league
         //getData()
     }
+    init(sport:Sports,leagueNum:String,league:LeagueCD) {
+        self.sport=sport
+        self.leagueNum=leagueNum
+        self.league = LeagueModel(league: league)
+    }
     func getData(_ handler:@escaping()->Void){
         //UpComingEvent Parser
         DataParser().parsingFBData(ClassType: EventResult.self, checkSportOrLeague: false, checkUpComingOrLastEvents: true,leagueId: leagueNum, sport: sport) { decodedData in

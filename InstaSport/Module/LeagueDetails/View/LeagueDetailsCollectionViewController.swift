@@ -12,6 +12,11 @@ import CoreData
 
 class LeagueDetailsCollectionViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     var viewModel:LeagueDetailsViewModel?
+    var checkFav:Bool = false {
+        didSet{
+            setupFavoriteButton()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel?.getData({
@@ -54,15 +59,6 @@ class LeagueDetailsCollectionViewController: UICollectionViewController,UICollec
            
            
        }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -196,6 +192,9 @@ class LeagueDetailsCollectionViewController: UICollectionViewController,UICollec
         
         navigationItem.rightBarButtonItem = favoriteButton
     }
+    
+    
+    
         
         func drawThirdCollection() -> NSCollectionLayoutSection{
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
@@ -212,7 +211,6 @@ class LeagueDetailsCollectionViewController: UICollectionViewController,UICollec
                 elementKind: UICollectionView.elementKindSectionHeader,
                 alignment: .top
             )
-            
             // Add the header to the section
             section.boundarySupplementaryItems = [header]
             // animation
@@ -227,23 +225,26 @@ class LeagueDetailsCollectionViewController: UICollectionViewController,UICollec
             }
             return section
         }
-        // MARK: UICollectionViewDelegate
-//    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-//            return false
-//            
-//        }
+
     @objc func addToFavorites(){
         if CoreDataManager.shared.isFavorite(league: viewModel!.league,
                                                  arrayOfLeagues: CoreDataManager.shared.fetchSavedLeagues()){
                 showAlert()
+            
             }else{
-                CoreDataManager.shared.saveLeague(viewModel!.league)
+                CoreDataManager.shared.saveLeague(viewModel!.league,sport:viewModel!.sport)
+                checkFav=true
             }
         }
         func showAlert(){
-            let alert = UIAlertController(title: "Already in Favorite", message: "", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
+            let alert = UIAlertController(title: "are U sure to delete", message: "", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Okay", style: .default) { alert in
+                CoreDataManager.shared.removeLeague(leagueKey: self.viewModel!.league.leagueKey)
+                self.checkFav = false
+            }
             alert.addAction(action)
+            let action2 = UIAlertAction(title: "Cancel", style: .default,handler: nil)
+            alert.addAction(action2)
             self.present(alert,animated: true)
         }
     }

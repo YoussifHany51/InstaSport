@@ -35,8 +35,6 @@
                         <rect key="frame" x="250" y="35" width="50" height="36"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="u68-61-aUU" secondAttribute="height" multiplier="25:18" id="2V7-Xa-XEk"/>
-                            <constraint firstAttribute="width" constant="50" id="vBf-fC-pEI"/>
-                            <constraint firstAttribute="height" constant="36" id="xsG-NG-Lip"/>
                         </constraints>
                         <state key="normal" image="youtube2"/>
                         <connections>
@@ -45,19 +43,23 @@
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="u68-61-aUU" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.339623" id="0aT-eX-3bo"/>
                     <constraint firstItem="CdP-GQ-rbX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8L5-PQ-sv2"/>
                     <constraint firstItem="vN2-yt-SV2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="EFk-vV-EA9"/>
                     <constraint firstItem="u68-61-aUU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Gex-0r-ytb"/>
                     <constraint firstItem="u68-61-aUU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="35" id="TUi-on-8da"/>
+                    <constraint firstItem="u68-61-aUU" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="25:53" id="YuQ-h2-dnW"/>
                     <constraint firstAttribute="trailing" secondItem="u68-61-aUU" secondAttribute="trailing" constant="20" id="dgV-Oy-YQl"/>
                     <constraint firstItem="CdP-GQ-rbX" firstAttribute="leading" secondItem="vN2-yt-SV2" secondAttribute="trailing" constant="8" id="i4W-FT-Rh3"/>
                     <constraint firstItem="vN2-yt-SV2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="oKb-1I-ktv"/>
+                    <constraint firstItem="u68-61-aUU" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.339623" id="uLp-1e-3pC"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="leagueImageLabel" destination="vN2-yt-SV2" id="Vby-Gx-t8f"/>
                 <outlet property="leagueTitleLabel" destination="CdP-GQ-rbX" id="mRQ-Ec-nlS"/>
+                <outlet property="view" destination="H2p-sc-9uM" id="Y4F-XG-Xu8"/>
             </connections>
             <point key="canvasLocation" x="-41.221374045801525" y="-34.507042253521128"/>
         </tableViewCell>

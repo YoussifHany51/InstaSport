@@ -15,12 +15,13 @@ class CoreDataManager {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    func saveLeague(_ league: LeagueModel) {
+    func saveLeague(_ league: LeagueModel,sport:Sports) {
         let leagueEntity = LeagueCD(context: context)
+        leagueEntity.sport=sport.rawValue
         leagueEntity.leagueKey = Int32(league.leagueKey)
         leagueEntity.leagueName = league.leagueName
         leagueEntity.leagueLogo = league.leagueLogo
-        leagueEntity.leagueUrl = Converter.convertingImgToStr(img: league.leagueLogo!)
+        leagueEntity.leagueUrl = Converter.convertingImgToStr(img: league.leagueLogo ?? "imgFB")
         
         do {
             try context.save()

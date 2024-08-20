@@ -11,12 +11,18 @@ class FavoriteTableViewCell: UITableViewCell {
 
     @IBOutlet weak var favoriteImage: UIImageView!
     
+    @IBOutlet weak var view: UIView!
     @IBOutlet weak var favoriteLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        view.layer.cornerRadius=20
+        view.layer.borderWidth=2
+        view.layer.borderColor=UIColor.clear.cgColor
+        
         // Initialization code
         setRoundedForImgCell(myImg : favoriteImage)
         viewCellUI()
+        
     }
 
     @IBAction func youtubeButton(_ sender: Any) {

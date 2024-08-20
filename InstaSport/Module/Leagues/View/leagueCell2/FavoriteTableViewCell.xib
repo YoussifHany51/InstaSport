@@ -43,7 +43,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="Vc4-61-vAP" firstAttribute="centerY" secondItem="ldO-U8-prk" secondAttribute="centerY" id="2lh-cb-9pg"/>
                             <constraint firstItem="Vc4-61-vAP" firstAttribute="leading" secondItem="Xa1-ay-064" secondAttribute="trailing" constant="18" id="LpJ-Fx-hII"/>
@@ -63,7 +63,6 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="ldO-U8-prk" firstAttribute="leading" secondItem="x5R-ga-MPi" secondAttribute="leading" constant="8" id="5cC-L0-Hj2"/>
                     <constraint firstAttribute="bottom" secondItem="ldO-U8-prk" secondAttribute="bottom" constant="8" id="JSz-oC-tzu"/>
@@ -75,14 +74,15 @@
             <connections>
                 <outlet property="favoriteImage" destination="STg-6g-HxS" id="GkO-Db-Ovy"/>
                 <outlet property="favoriteLabel" destination="Xa1-ay-064" id="9Bj-qO-RX1"/>
+                <outlet property="view" destination="ldO-U8-prk" id="GeA-za-vjz"/>
             </connections>
             <point key="canvasLocation" x="-261.06870229007632" y="-296.12676056338029"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="youtube2" width="945" height="703"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

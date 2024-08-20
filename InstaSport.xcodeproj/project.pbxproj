@@ -160,8 +160,6 @@
 		09311A6E2C712D9300FDFB1F /* FavoriteCell */ = {
 			isa = PBXGroup;
 			children = (
-				09311A712C712E7500FDFB1F /* FavoriteTableViewCell.swift */,
-				09311A722C712E7500FDFB1F /* FavoriteTableViewCell.xib */,
 			);
 			path = FavoriteCell;
 			sourceTree = "<group>";
@@ -330,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				0915AE932C7112380084C00B /* LeaguesTableViewController.swift */,
+				3C25D9582C74A1660059F449 /* leagueCell2 */,
 				3C0425A82C6FD83B00F6FDE5 /* LeagueCell */,
 			);
 			path = View;
@@ -565,6 +564,15 @@
 				3C25D9542C73A1FD0059F449 /* MyCustomHeaderView.swift */,
 			);
 			path = HeaderView;
+			sourceTree = "<group>";
+		};
+		3C25D9582C74A1660059F449 /* leagueCell2 */ = {
+			isa = PBXGroup;
+			children = (
+				09311A712C712E7500FDFB1F /* FavoriteTableViewCell.swift */,
+				09311A722C712E7500FDFB1F /* FavoriteTableViewCell.xib */,
+			);
+			path = leagueCell2;
 			sourceTree = "<group>";
 		};
 		3CCAD30D2C717E19000E4F61 /* View */ = {

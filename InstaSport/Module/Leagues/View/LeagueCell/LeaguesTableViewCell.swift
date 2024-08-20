@@ -9,12 +9,15 @@ import UIKit
 import Kingfisher
 class LeaguesTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var view: UIView!
     @IBOutlet weak var leagueImageLabel: UIImageView!
     
     @IBOutlet weak var leagueTitleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        view.layer.cornerRadius=20
+        view.layer.borderWidth=2
+        view.layer.borderColor=UIColor.clear.cgColor
         setRoundedForImgCell(myImg : leagueImageLabel)
         viewCellUI()
     }

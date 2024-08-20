@@ -15,8 +15,11 @@ class LeaguesViewModel{
         self.sport=sport
         self.checkFavorite=checkFavorite
         if(checkFavorite){
-            arrFav = CoreDataManager.shared.fetchSavedLeagues()
+            reloadCoreData()
         }
+    }
+    func reloadCoreData(){
+        arrFav = CoreDataManager.shared.fetchSavedLeagues()
     }
     func getData(handler:@escaping()->Void){
         DataParser().parsingFBData(ClassType: LeagueResult.self, checkSportOrLeague: true, sport: sport) { decodedData in

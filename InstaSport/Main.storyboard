@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ndw-7Q-dt8">
-                                <rect key="frame" x="10" y="203" width="373" height="566"/>
+                                <rect key="frame" x="10" y="255" width="373" height="514"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SIa-26-ysN">
                                     <size key="itemSize" width="128" height="128"/>
@@ -46,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1966" y="-785"/>
+            <point key="canvasLocation" x="2050" y="-1106"/>
         </scene>
         <!--AllLeagues-->
         <scene sceneID="PV7-ui-fDM">
@@ -72,7 +72,6 @@
                     <tabBarItem key="tabBarItem" title="AllLeagues" image="star.circle.fill" catalog="system" id="85S-Ev-eZM"/>
                     <navigationItem key="navigationItem" id="Xry-5r-nki"/>
                     <connections>
-                        <outlet property="leaguesTableView" destination="9Br-WA-Spk" id="EQz-Hq-YOk"/>
                         <outlet property="searchBar" destination="uaT-Ci-bYP" id="d1i-k7-83S"/>
                         <segue destination="bU7-Qp-JPi" kind="show" identifier="pushView" id="LZn-xF-8Hh"/>
                     </connections>
@@ -192,37 +191,14 @@
             </objects>
             <point key="canvasLocation" x="1145.8015267175572" y="-346.47887323943661"/>
         </scene>
-        <!--Favorite-->
-        <scene sceneID="TgU-Ye-rZJ">
-            <objects>
-                <tableViewController id="mAN-n7-PJg" customClass="FavoriteTableViewController" customModule="InstaSport" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="GFT-7x-RuQ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <connections>
-                            <outlet property="dataSource" destination="mAN-n7-PJg" id="cf0-Zj-sbd"/>
-                            <outlet property="delegate" destination="mAN-n7-PJg" id="s3K-9H-qpY"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Favorite" image="star" catalog="system" id="qq8-Ij-P3a"/>
-                    <connections>
-                        <outlet property="favoriteTableView" destination="GFT-7x-RuQ" id="iDD-Xv-WSU"/>
-                        <segue destination="bU7-Qp-JPi" kind="show" identifier="pushToDetails" id="jZV-MB-YJu"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nvs-jg-qQR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2092" y="188"/>
-        </scene>
         <!--All Sports-->
         <scene sceneID="a3t-F1-PLh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9V6-3s-twQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="All Sports" image="figure.disc.sports" catalog="system" id="5jD-26-rda"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NJv-Ph-9g2">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="NJv-Ph-9g2">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -235,12 +211,8 @@
             <point key="canvasLocation" x="1146" y="-1080"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="LZn-xF-8Hh"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="figure.disc.sports" catalog="system" width="128" height="108"/>
-        <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

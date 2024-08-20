@@ -10,14 +10,16 @@ import UIKit
 class Converter{
     static func convertingImgToStr(img:String)->String{
         var str=""
-        do{
-             let imgData = try Data(contentsOf: URL(string: img)!)
-            let str = imgData.base64EncodedString(options: .lineLength64Characters)
-            
-        }catch{
-            
+        DispatchQueue.global().async {
+            do{
+                
+                 let imgData = try Data(contentsOf: URL(string: img)!)
+                str = imgData.base64EncodedString(options: .lineLength64Characters)
+                
+            }catch{
+            }
         }
-        
+                
         return str
     }
     
