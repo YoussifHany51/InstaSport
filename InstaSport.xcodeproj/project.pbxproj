@@ -13,6 +13,12 @@
 		09A601F72C6D1E8500F036AE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A601F62C6D1E8500F036AE /* CoreDataManager.swift */; };
 		09A601FB2C6D1F1000F036AE /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A601FA2C6D1F1000F036AE /* FavoriteViewModel.swift */; };
 		09A602012C6D2D1A00F036AE /* NetworkConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A602002C6D2D1A00F036AE /* NetworkConnectionManager.swift */; };
+		09BB8E462C74D088009172C0 /* NWParamtersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB8E452C74D088009172C0 /* NWParamtersTests.swift */; };
+		09BB8E482C74D0ED009172C0 /* DateOptimizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB8E472C74D0ED009172C0 /* DateOptimizerTests.swift */; };
+		09BB8E4C2C74D17B009172C0 /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB8E4B2C74D17B009172C0 /* CoreDataManagerTests.swift */; };
+		09BB8E4E2C74D2C5009172C0 /* NWServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB8E4D2C74D2C5009172C0 /* NWServiceTests.swift */; };
+		09BB8E502C74D2DE009172C0 /* DataParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB8E4F2C74D2DE009172C0 /* DataParserTests.swift */; };
+		09BB8E522C74FB34009172C0 /* NWServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB8E512C74FB34009172C0 /* NWServiceProtocol.swift */; };
 		09C626202C6BA8E7001FC2BD /* InstaSport.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 09C6261E2C6BA8E7001FC2BD /* InstaSport.xcdatamodeld */; };
 		09C626302C6BA917001FC2BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C6262C2C6BA917001FC2BD /* AppDelegate.swift */; };
 		09C626312C6BA917001FC2BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09C6262D2C6BA917001FC2BD /* Assets.xcassets */; };
@@ -83,6 +89,12 @@
 		09A601F62C6D1E8500F036AE /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		09A601FA2C6D1F1000F036AE /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		09A602002C6D2D1A00F036AE /* NetworkConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnectionManager.swift; sourceTree = "<group>"; };
+		09BB8E452C74D088009172C0 /* NWParamtersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NWParamtersTests.swift; sourceTree = "<group>"; };
+		09BB8E472C74D0ED009172C0 /* DateOptimizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOptimizerTests.swift; sourceTree = "<group>"; };
+		09BB8E4B2C74D17B009172C0 /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
+		09BB8E4D2C74D2C5009172C0 /* NWServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NWServiceTests.swift; sourceTree = "<group>"; };
+		09BB8E4F2C74D2DE009172C0 /* DataParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParserTests.swift; sourceTree = "<group>"; };
+		09BB8E512C74FB34009172C0 /* NWServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NWServiceProtocol.swift; sourceTree = "<group>"; };
 		09C626122C6BA8E7001FC2BD /* InstaSport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaSport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09C6261F2C6BA8E7001FC2BD /* InstaSport.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InstaSport.xcdatamodel; sourceTree = "<group>"; };
 		09C626262C6BA8EB001FC2BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -157,13 +169,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		09311A6E2C712D9300FDFB1F /* FavoriteCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FavoriteCell;
-			sourceTree = "<group>";
-		};
 		09A601F32C6D1C9200F036AE /* CoreDataService */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,7 +180,6 @@
 		09A601F82C6D1EF000F036AE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				09311A6E2C712D9300FDFB1F /* FavoriteCell */,
 				09DDFFFF2C71016E006CC9C6 /* FavoriteTableViewController.swift */,
 			);
 			path = View;
@@ -203,6 +207,18 @@
 				09A602002C6D2D1A00F036AE /* NetworkConnectionManager.swift */,
 			);
 			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		09BB8E442C74CFDF009172C0 /* ServiceTesting */ = {
+			isa = PBXGroup;
+			children = (
+				09BB8E452C74D088009172C0 /* NWParamtersTests.swift */,
+				09BB8E472C74D0ED009172C0 /* DateOptimizerTests.swift */,
+				09BB8E4B2C74D17B009172C0 /* CoreDataManagerTests.swift */,
+				09BB8E4D2C74D2C5009172C0 /* NWServiceTests.swift */,
+				09BB8E4F2C74D2DE009172C0 /* DataParserTests.swift */,
+			);
+			path = ServiceTesting;
 			sourceTree = "<group>";
 		};
 		09C626092C6BA8E7001FC2BD = {
@@ -346,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				3C04252F2C6BC17600F6FDE5 /* NWService.swift */,
+				09BB8E512C74FB34009172C0 /* NWServiceProtocol.swift */,
 			);
 			path = NWService;
 			sourceTree = "<group>";
@@ -493,6 +510,7 @@
 		3C0425B02C6FEC3700F6FDE5 /* InstaSportTests */ = {
 			isa = PBXGroup;
 			children = (
+				09BB8E442C74CFDF009172C0 /* ServiceTesting */,
 				3C0425B12C6FEC3700F6FDE5 /* InstaSportTests.swift */,
 			);
 			path = InstaSportTests;
@@ -803,6 +821,7 @@
 				3C0425A42C6FC38600F6FDE5 /* EventsModel.swift in Sources */,
 				09A601F72C6D1E8500F036AE /* CoreDataManager.swift in Sources */,
 				09C6266B2C6BCE28001FC2BD /* LeaguesViewModel.swift in Sources */,
+				09BB8E522C74FB34009172C0 /* NWServiceProtocol.swift in Sources */,
 				3C25D9572C73CA700059F449 /* Converter.swift in Sources */,
 				09C626322C6BA917001FC2BD /* SceneDelegate.swift in Sources */,
 				09F6EF622C722969001B1BFA /* LeagueCD.swift in Sources */,
@@ -820,7 +839,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09BB8E502C74D2DE009172C0 /* DataParserTests.swift in Sources */,
+				09BB8E4E2C74D2C5009172C0 /* NWServiceTests.swift in Sources */,
+				09BB8E462C74D088009172C0 /* NWParamtersTests.swift in Sources */,
 				3C0425B22C6FEC3700F6FDE5 /* InstaSportTests.swift in Sources */,
+				09BB8E4C2C74D17B009172C0 /* CoreDataManagerTests.swift in Sources */,
+				09BB8E482C74D0ED009172C0 /* DateOptimizerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
