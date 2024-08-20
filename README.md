@@ -1,5 +1,7 @@
 # InstaSport 🏃🏽‍♂️‍➡️⚽️
-InstaSport is an iOS app that displays sports leagues for different sports like football, basketball, tennis, and cricket. Users can view the list of leagues, select their favorite leagues, and save them for quick access later. The app uses Core Data for persistence and fetches league data from an API.
+
+InstaSport is a comprehensive iOS app designed for sports enthusiasts. It provides up-to-date information on leagues from various sports, including football, basketball, tennis, and cricket. Users can explore different leagues, mark their favorites, and store them locally for easy access. The app leverages Core Data for saving league information and features a seamless user experience with real-time data fetching from a reliable API.
+
 
 <img src="https://github.com/user-attachments/assets/1152dc72-2b0b-473f-8ba6-ccfe07ba1076" alt="Simulator Screenshot" width="300" height="600">
 <img src="https://github.com/user-attachments/assets/72b6b754-4c27-4264-b59a-f96ae5efb02d" alt="Simulator Screenshot" width="300" height="600">
