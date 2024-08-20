@@ -27,6 +27,11 @@ class LeagueDetailsViewModel{
     }
     
     
+    
+//    func get UpComingEvents(){
+//        
+//    }
+    
     func getData(_ handler: @escaping () -> Void) {
         // UpComingEvent Parser
         DataParser().parsingFBData(ClassType: EventResult.self, checkSportOrLeague: false, checkUpComingOrLastEvents: true, leagueId: leagueNum, sport: sport) { decodedData in
@@ -41,11 +46,6 @@ class LeagueDetailsViewModel{
                 print(self.setTeams.count)
             }
             self.arrTeams = Array(self.setTeams)
-            
-            if self.arrUpComingEvents.count == 0 {
-                self.putDefaultUpComingEventValue()
-            }
-            
             // Nested parser for last event
             DataParser().parsingFBData(ClassType: EventResult.self, checkSportOrLeague: false, checkUpComingOrLastEvents: false, leagueId: self.leagueNum, sport: self.sport) { decodedData in
                 let res = decodedData
@@ -58,19 +58,37 @@ class LeagueDetailsViewModel{
                     self.setTeams.insert(obj2)
                     print(self.setTeams.count)
                 }
-                self.arrTeams = Array(self.setTeams)
                 
-                if self.arrlastEvent.count == 0 {
-                    self.putDefaultLastEventValue()
-                }
-                if self.arrTeams.count == 0 {
-                    self.putDefaultTeamValue()
-                }
                 
                 handler() // Call handler here, ensuring it's only called once
             }
+            
+            
+        }
+        self.arrTeams = Array(self.setTeams)
+        if self.arrUpComingEvents.count == 0{
+            self.putDefaultUpComingEventValue()
+        }
+        if self.arrlastEvent.count == 0 {
+            self.putDefaultLastEventValue()
+        }
+        if self.arrTeams.count == 0 {
+            self.putDefaultTeamValue()
         }
     }
+    
+    
+    
+    func putDefaultLastEventValue(){
+        arrlastEvent.append(EventModel())
+    }
+    func putDefaultUpComingEventValue(){
+        arrUpComingEvents.append(EventModel(i: 0))
+    }
+    func putDefaultTeamValue(){
+        arrTeams.append(TeamsModel(imgUrl: "Error", teamKey: "", teamName: "NO Teams"))
+    }
+
 //    func getData(_ handler:@escaping()->Void){
 //        //UpComingEvent Parser
 //        DataParser().parsingFBData(ClassType: EventResult.self, checkSportOrLeague: false, checkUpComingOrLastEvents: true,leagueId: leagueNum, sport: sport) { decodedData in
@@ -117,13 +135,4 @@ class LeagueDetailsViewModel{
     
     
     
-    func putDefaultLastEventValue(){
-        arrlastEvent.append(EventModel())
-    }
-    func putDefaultUpComingEventValue(){
-        arrUpComingEvents.append(EventModel(i: 0))
-    }
-    func putDefaultTeamValue(){
-        arrTeams.append(TeamsModel(imgUrl: "Error", teamKey: "", teamName: "NO Teams"))
-    }
 }

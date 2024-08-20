@@ -34,9 +34,14 @@ class LeaguesTableViewCell: UITableViewCell {
         }
     }
     
+    
     func openYouTube() {
-        UIApplication.shared.open(URL(string: ("https://www.youtube.com/@\(String(describing: leagueTitleLabel.text))"))!, options: [:], completionHandler: nil)
+        var str = leagueTitleLabel.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        str = str.replacingOccurrences(of: " ", with: "")
+        print("\(str)")
+        UIApplication.shared.open(URL(string: ("https://www.youtube.com/@\(str)"))!, options: [:], completionHandler: nil)
     }
+
 
     func setRoundedForImgCell(myImg : UIImageView){
         let saveCenter = myImg.center

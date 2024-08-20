@@ -62,6 +62,8 @@
 		3C25D9672C750DFB0059F449 /* LeagueDetailsVMTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C25D9632C750DFB0059F449 /* LeagueDetailsVMTest.swift */; };
 		3C25D9682C750DFB0059F449 /* LeagueVMTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C25D9642C750DFB0059F449 /* LeagueVMTest.swift */; };
 		3C25D9692C750DFB0059F449 /* TeamDetailsVMTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C25D9652C750DFB0059F449 /* TeamDetailsVMTest.swift */; };
+		3C76CCB82C7513DE004EAB3D /* extTeamDetailsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C76CCB72C7513DE004EAB3D /* extTeamDetailsCollectionViewController.swift */; };
+		3C76CCBB2C75189C004EAB3D /* UpComingEventVMTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C76CCBA2C75189C004EAB3D /* UpComingEventVMTest.swift */; };
 		3CCAD30C2C717B14000E4F61 /* TeamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCAD30B2C717B13000E4F61 /* TeamsModel.swift */; };
 		3CCAD3102C717E52000E4F61 /* TeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCAD30F2C717E52000E4F61 /* TeamsViewModel.swift */; };
 		3CCAD3192C721FEC000E4F61 /* TeamDetailsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCAD3182C721FEC000E4F61 /* TeamDetailsCollectionViewController.swift */; };
@@ -139,6 +141,8 @@
 		3C25D9632C750DFB0059F449 /* LeagueDetailsVMTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeagueDetailsVMTest.swift; sourceTree = "<group>"; };
 		3C25D9642C750DFB0059F449 /* LeagueVMTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeagueVMTest.swift; sourceTree = "<group>"; };
 		3C25D9652C750DFB0059F449 /* TeamDetailsVMTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamDetailsVMTest.swift; sourceTree = "<group>"; };
+		3C76CCB72C7513DE004EAB3D /* extTeamDetailsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = extTeamDetailsCollectionViewController.swift; path = ../extTeamDetailsCollectionViewController.swift; sourceTree = "<group>"; };
+		3C76CCBA2C75189C004EAB3D /* UpComingEventVMTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingEventVMTest.swift; sourceTree = "<group>"; };
 		3CCAD30B2C717B13000E4F61 /* TeamsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsModel.swift; sourceTree = "<group>"; };
 		3CCAD30F2C717E52000E4F61 /* TeamsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewModel.swift; sourceTree = "<group>"; };
 		3CCAD3182C721FEC000E4F61 /* TeamDetailsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -177,32 +181,6 @@
 			path = CoreDataService;
 			sourceTree = "<group>";
 		};
-
-		09A601F82C6D1EF000F036AE /* View */ = {
-			isa = PBXGroup;
-			children = (
-				09DDFFFF2C71016E006CC9C6 /* FavoriteTableViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		09A601F92C6D1EF700F036AE /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				09A601FA2C6D1F1000F036AE /* FavoriteViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		09A601FC2C6D1FAA00F036AE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				09F6EF612C722969001B1BFA /* LeagueCD.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-
 		09A601FF2C6D2CFC00F036AE /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -501,9 +479,8 @@
 		3C0425B02C6FEC3700F6FDE5 /* InstaSportTests */ = {
 			isa = PBXGroup;
 			children = (
-
+				3C76CCB92C751869004EAB3D /* CellViewModel */,
 				3C25D9662C750DFB0059F449 /* ViewModelsTest */,
-
 				09BB8E442C74CFDF009172C0 /* ServiceTesting */,
 				3C0425B12C6FEC3700F6FDE5 /* InstaSportTests.swift */,
 			);
@@ -597,6 +574,14 @@
 			path = ViewModelsTest;
 			sourceTree = "<group>";
 		};
+		3C76CCB92C751869004EAB3D /* CellViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3C76CCBA2C75189C004EAB3D /* UpComingEventVMTest.swift */,
+			);
+			path = CellViewModel;
+			sourceTree = "<group>";
+		};
 		3CCAD30D2C717E19000E4F61 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -635,6 +620,7 @@
 		3CCAD3152C721F6D000E4F61 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3C76CCB72C7513DE004EAB3D /* extTeamDetailsCollectionViewController.swift */,
 				3CCAD3182C721FEC000E4F61 /* TeamDetailsCollectionViewController.swift */,
 				3CCAD31A2C72201F000E4F61 /* PlayerCard */,
 			);
@@ -794,6 +780,7 @@
 				09C626202C6BA8E7001FC2BD /* InstaSport.xcdatamodeld in Sources */,
 				09C626302C6BA917001FC2BD /* AppDelegate.swift in Sources */,
 				3C0425942C6FA48900F6FDE5 /* CollectionViewExtension.swift in Sources */,
+				3C76CCB82C7513DE004EAB3D /* extTeamDetailsCollectionViewController.swift in Sources */,
 				3CFF27422C722CBC0010C91F /* NWParamters.swift in Sources */,
 				3CCAD30C2C717B14000E4F61 /* TeamsModel.swift in Sources */,
 				3C0425912C6FA1CB00F6FDE5 /* TeamsCell.swift in Sources */,
@@ -841,19 +828,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				09BB8E502C74D2DE009172C0 /* DataParserTests.swift in Sources */,
-
 				3C25D9672C750DFB0059F449 /* LeagueDetailsVMTest.swift in Sources */,
 				3C25D9682C750DFB0059F449 /* LeagueVMTest.swift in Sources */,
-
+				3C76CCBB2C75189C004EAB3D /* UpComingEventVMTest.swift in Sources */,
 				09BB8E4E2C74D2C5009172C0 /* NWServiceTests.swift in Sources */,
-
 				09BB8E462C74D088009172C0 /* NWParamtersTests.swift in Sources */,
 				3C0425B22C6FEC3700F6FDE5 /* InstaSportTests.swift in Sources */,
 				09BB8E4C2C74D17B009172C0 /* CoreDataManagerTests.swift in Sources */,
 				09BB8E482C74D0ED009172C0 /* DateOptimizerTests.swift in Sources */,
-
 				3C25D9692C750DFB0059F449 /* TeamDetailsVMTest.swift in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
