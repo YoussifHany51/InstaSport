@@ -15,7 +15,7 @@ class LeaguesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let _ = viewModel{
-    
+            
         }else{
             viewModel=LeaguesViewModel(sport: .football, checkFavorite: true)
         }
@@ -23,9 +23,7 @@ class LeaguesTableViewController: UITableViewController {
             favoriteViewLoad()
         }else{
             LeagueViewLoad()
-        }
-
-
+        }   
     }
     
     func LeagueViewLoad(){
@@ -38,7 +36,6 @@ class LeaguesTableViewController: UITableViewController {
             activityIndicator = UIActivityIndicatorView(style: .large)
             activityIndicator.center = self.view.center
             self.view.addSubview(activityIndicator)
-            //checkSport()
         }else{
             noConnection()
         }
@@ -55,28 +52,24 @@ class LeaguesTableViewController: UITableViewController {
         if(viewModel!.checkFavorite){
             viewModel?.reloadCoreData()
             if viewModel!.arrFav.isEmpty {
-                    if imageEmptyData == nil { // Only add the image if it's not already added
-                        imageEmptyData = UIImageView(frame: CGRect(
-                            x: 50, y: 100,
-                            width: self.view.frame.width - 100, height: 200))
-                        imageEmptyData?.image = UIImage(named: "noData")
-                        self.view.addSubview(imageEmptyData!)
-                    }
-                } else {
-                    // Remove the empty state image if it exists
-                    
-                    imageEmptyData?.removeFromSuperview()
-                    imageEmptyData = nil
+                if imageEmptyData == nil { // Only add the image if it's not already added
+                    imageEmptyData = UIImageView(frame: CGRect(
+                        x: 50, y: 100,
+                        width: self.view.frame.width - 100, height: 200))
+                    imageEmptyData?.image = UIImage(named: "noData")
+                    self.view.addSubview(imageEmptyData!)
                 }
+            } else {
+                // Remove the empty state image if it exists
                 
+                imageEmptyData?.removeFromSuperview()
+                imageEmptyData = nil
+            }
+            
             tableView.reloadData()
         }
         
     }
-//    func checkSport(){
-//        activityIndicator.startAnimating()
-//        viewModel=LeaguesViewModel(sport: sport!, checkFavorite: false)
-//    }
     
     func reloadViewData(){
         activityIndicator.stopAnimating()
@@ -131,7 +124,11 @@ class LeaguesTableViewController: UITableViewController {
         return 90
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "pushView", sender: self)
+        if NetworkConnectionManager.shared.isConnected{
+            self.performSegue(withIdentifier: "pushView", sender: self)
+        }else{
+            noConnection()
+        }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pushView"{
@@ -144,10 +141,10 @@ class LeaguesTableViewController: UITableViewController {
                         let str = "\(viewModel!.arrayOfLeagues[indexPath.row].leagueKey)"
                         destination.viewModel = LeagueDetailsViewModel(sport: viewModel!.sport, leagueNum: str,league: viewModel!.arrayOfLeagues[indexPath.row])
                     }
-                    
                 }
             }
         }
+        
     }
     func conVstrToSports(str:String)->Sports{
         switch(str){
@@ -181,6 +178,6 @@ class LeaguesTableViewController: UITableViewController {
         }()
         tableView.backgroundView = noConnectionImageView
     }
-
-
+    
+    
 }

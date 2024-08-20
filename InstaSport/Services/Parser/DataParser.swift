@@ -11,18 +11,17 @@ class DataParser{
         NWService(checkSportOrLeague:checkSportOrLeague, checkUpComingOrLastEvents: checkUpComingOrLastEvents, sport: sport).fetchLeaguesAPIData(leagueID: leagueId) { data in
             do{
                 let decodedData = try JSONDecoder().decode(ClassType, from: data)
-                   handler(decodedData)
+                handler(decodedData)
             }catch{
                 print("Error in decoding Data")
             }
         }
-//        return decodedData!
     }
     func ParsingTeamData(sport:Sports,teamKey:String,handler:@escaping(_ decodedData:TeamsResult)->Void){
         NWService(checkSportOrLeague: true, checkUpComingOrLastEvents: true, sport: sport).fetchTeamDetails(teamId: teamKey) { data in
             do{
                 let decodedData = try JSONDecoder().decode(TeamsResult.self, from: data)
-                   handler(decodedData)
+                handler(decodedData)
             }catch {
                 print("Error in decoding TeamDetails Data")
             }
