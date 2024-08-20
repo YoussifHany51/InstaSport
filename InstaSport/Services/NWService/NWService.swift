@@ -7,69 +7,59 @@
 
 import Foundation
 import Alamofire
-class NWService{
+class NWService:NWServiceProtocol{
     let url = "https://apiv2.allsportsapi.com/"
-    let sport:Sports?
+    let sport:Sports
     var fullURL:String{
-        url+sport!.rawValue+"/?"
+        url+sport.rawValue+"/?"
     }
+    var checkSportOrLeague:Bool  //false leaguesDetails
+    var checkUpComingOrLastEvents:Bool //true upComingEvent
     
-    init(sport: Sports) {
+    init(checkSportOrLeague:Bool,checkUpComingOrLastEvents:Bool,sport: Sports) {
         self.sport = sport
+        self.checkSportOrLeague = checkSportOrLeague
+        self.checkUpComingOrLastEvents = checkUpComingOrLastEvents
     }
-    func fetchLeaguesAPIData(handler:@escaping(_ data:Data)->Void){
-        let param: [String: Any] = [
-            "met": "Leagues",
-            "APIkey": "2c28d4947373c9aad33c4b48c0f99c79ce4469f4c59f207b0ee9d8f73d2ae9e2"
-        ]
+    //met=Teams&teamId=96&APIkey=2c28d4947373c9aad33c4b48c0f99c79ce4469f4c59f207b0ee9d8f73d2ae9e2
+    func fetchTeamDetails(teamId:String,completion handler:@escaping(_ data:Data)->Void){
+        var param:[String:Any]=[:]
+        param = ["met":"Teams","teamId":teamId,"APIkey": "2c28d4947373c9aad33c4b48c0f99c79ce4469f4c59f207b0ee9d8f73d2ae9e2"]
+        
+        print(fullURL)
         AF.request(fullURL,method: .get,parameters: param,encoding: URLEncoding.default,headers: nil,interceptor: nil).response { response in
             switch response.result{
-            case .success(let data):handler(data!)
+            case .success(let data):print("Fetch Teams Details data success")
+                handler(data!)
+            case .failure(let error):print("Error in fetching data\(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func fetchLeaguesAPIData(leagueID:String="305",completion handler:@escaping(_ data:Data)->Void){
+        var param:[String:Any]=[:]
+        
+        if (checkSportOrLeague){
+        param = [
+           "met": "Leagues",
+           "APIkey": "2c28d4947373c9aad33c4b48c0f99c79ce4469f4c59f207b0ee9d8f73d2ae9e2"
+       ]
+        }else{
+            param = ["met":"Fixtures",
+                     "leagueId":leagueID,
+                     "from":checkUpComingOrLastEvents ? DateOptimizer.currentDate : DateOptimizer.oneYearBefore,
+                     "to":checkUpComingOrLastEvents ? DateOptimizer.oneYearAfter : DateOptimizer.currentDate,
+                     "APIkey": "2c28d4947373c9aad33c4b48c0f99c79ce4469f4c59f207b0ee9d8f73d2ae9e2"]
+        }
+        print("the full url")
+        print(fullURL)
+        print(param)
+        AF.request(fullURL,method: .get,parameters: param,encoding: URLEncoding.default,headers: nil,interceptor: nil).response { response in
+            switch response.result{
+            case .success(let data):print("Fetch data success");handler(data!)
             case .failure(let error):print("Error in fetching data\(error.localizedDescription)")
             }
         }
 
     }
 }
-
-
-/*
- struct New: Codable {
-     let success: Int
-     let result: [Result]
- }
-
- // MARK: - Result
- struct Result: Codable {
-     let leagueKey: Int
-     let leagueName: String
-     let countryKey: Int
-     let countryName: String
-     let leagueLogo, countryLogo: String?
-
-     enum CodingKeys: String, CodingKey {
-         case leagueKey = "league_key"
-         case leagueName = "league_name"
-         case countryKey = "country_key"
-         case countryName = "country_name"
-         case leagueLogo = "league_logo"
-         case countryLogo = "country_logo"
-     }
- }
- 
- 
- 
- struct Result: Codable {
-     let leagueKey: Int
-     let leagueName: String
-     let countryKey: Int
-     let countryName: String
-
-     enum CodingKeys: String, CodingKey {
-         case leagueKey = "league_key"
-         case leagueName = "league_name"
-         case countryKey = "country_key"
-         case countryName = "country_name"
-     }
- }
- */

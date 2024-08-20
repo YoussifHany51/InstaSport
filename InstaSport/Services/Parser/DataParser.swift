@@ -7,26 +7,25 @@
 
 import Foundation
 class DataParser{
-    func parsingFBData(sport:Sports,handler:@escaping(_ decodedData:SportsProtocol)->Void){
-//        var decodedData:FootBallResult?
-        NWService(sport: sport).fetchLeaguesAPIData { data in
+    func parsingFBData<ClassType : Decodable>(ClassType : ClassType.Type,checkSportOrLeague:Bool,checkUpComingOrLastEvents:Bool=false,leagueId:String="305",sport:Sports,teamKey:Int=96,handler:@escaping(_ decodedData:ClassType)->Void){
+        NWService(checkSportOrLeague:checkSportOrLeague, checkUpComingOrLastEvents: checkUpComingOrLastEvents, sport: sport).fetchLeaguesAPIData(leagueID: leagueId) { data in
             do{
-                switch sport{
-                case .football:let decodedData = try JSONDecoder().decode(FootBallResult.self, from: data)
-                    handler(decodedData)
-                case .basketball:
-                    let decodedData = try JSONDecoder().decode(BasketBallResult.self, from: data)
-                        handler(decodedData)
-                case .tennis:let decodedData = try JSONDecoder().decode(TennisResult.self, from: data)
-                    handler(decodedData)
-                    
-                case .cricket:let decodedData = try JSONDecoder().decode(CricketResult.self, from: data)
-                    handler(decodedData)
-                }
+                let decodedData = try JSONDecoder().decode(ClassType, from: data)
+                handler(decodedData)
             }catch{
                 print("Error in decoding Data")
             }
         }
-//        return decodedData!
+    }
+    func ParsingTeamData(sport:Sports,teamKey:String,handler:@escaping(_ decodedData:TeamsResult)->Void){
+        NWService(checkSportOrLeague: true, checkUpComingOrLastEvents: true, sport: sport).fetchTeamDetails(teamId: teamKey) { data in
+            do{
+                let decodedData = try JSONDecoder().decode(TeamsResult.self, from: data)
+                handler(decodedData)
+            }catch {
+                print("Error in decoding TeamDetails Data")
+            }
+        }
+        
     }
 }

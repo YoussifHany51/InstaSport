@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="LatestResultCell" id="gTV-IL-0wX" customClass="LatestResultCell" customModule="InstaSport" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="570" height="271"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="570" height="271"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgStadium" translatesAutoresizingMaskIntoConstraints="NO" id="Uc7-wX-HPz">
+                        <rect key="frame" x="0.0" y="0.0" width="570" height="271"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AwayTeam" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="4Bq-rS-M7f">
+                        <rect key="frame" x="379.33333333333331" y="193.33333333333334" width="170.66666666666669" height="20.333333333333343"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKy-ep-uy8">
+                        <rect key="frame" x="242.00000000000003" y="76.666666666666671" width="86.333333333333343" height="22.333333333333329"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chelsea" translatesAutoresizingMaskIntoConstraints="NO" id="Zud-Bt-xNc">
+                        <rect key="frame" x="15" y="30" width="170.66666666666666" height="161.33333333333334"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chelsea" translatesAutoresizingMaskIntoConstraints="NO" id="Iht-De-1ay">
+                        <rect key="frame" x="379.33333333333331" y="30" width="170.66666666666669" height="161.33333333333334"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EventTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bib-TA-Pkg">
+                        <rect key="frame" x="243.33333333333334" y="109" width="83.666666666666657" height="22.333333333333343"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HomeTeam" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="uJR-Tr-fls">
+                        <rect key="frame" x="15" y="196.33333333333334" width="170.66666666666666" height="20.333333333333343"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stadium" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="fIk-5W-WM0">
+                        <rect key="frame" x="187.66666666666669" y="230.66666666666666" width="189.66666666666669" height="20.333333333333343"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hon-YW-QsT">
+                        <rect key="frame" x="259" y="141.33333333333334" width="52" height="28.333333333333343"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.91567345820000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="4Bq-rS-M7f" firstAttribute="top" secondItem="Iht-De-1ay" secondAttribute="bottom" constant="2" id="0nq-xB-IQH"/>
+                <constraint firstItem="Hon-YW-QsT" firstAttribute="top" secondItem="Bib-TA-Pkg" secondAttribute="bottom" constant="10" id="2HD-xy-kwh"/>
+                <constraint firstItem="4Bq-rS-M7f" firstAttribute="trailing" secondItem="Iht-De-1ay" secondAttribute="trailing" id="2fY-Ac-ivC"/>
+                <constraint firstItem="uJR-Tr-fls" firstAttribute="leading" secondItem="Zud-Bt-xNc" secondAttribute="leading" id="5dR-T7-GfX"/>
+                <constraint firstItem="Iht-De-1ay" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.595652" id="6YK-1l-Noa"/>
+                <constraint firstItem="4Bq-rS-M7f" firstAttribute="leading" secondItem="fIk-5W-WM0" secondAttribute="trailing" constant="2" id="7kC-hJ-LeI"/>
+                <constraint firstItem="Zud-Bt-xNc" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.595652" id="7kF-WK-mBr"/>
+                <constraint firstItem="RKy-ep-uy8" firstAttribute="centerX" secondItem="Uc7-wX-HPz" secondAttribute="centerX" id="8oI-pS-BfO"/>
+                <constraint firstItem="Bib-TA-Pkg" firstAttribute="centerX" secondItem="Uc7-wX-HPz" secondAttribute="centerX" id="EJm-cD-Dbi"/>
+                <constraint firstAttribute="trailing" secondItem="Uc7-wX-HPz" secondAttribute="trailing" id="ESU-WA-lCg"/>
+                <constraint firstItem="Hon-YW-QsT" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="20" id="FHe-y1-hZE"/>
+                <constraint firstItem="Hon-YW-QsT" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="JuJ-O0-7Y8"/>
+                <constraint firstAttribute="trailing" secondItem="Iht-De-1ay" secondAttribute="trailing" constant="20" id="Kao-ih-a6g"/>
+                <constraint firstAttribute="bottom" secondItem="Uc7-wX-HPz" secondAttribute="bottom" id="PDo-07-swj"/>
+                <constraint firstItem="Uc7-wX-HPz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="X13-oT-c8f"/>
+                <constraint firstItem="Iht-De-1ay" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="30" id="XfE-FR-7TE"/>
+                <constraint firstItem="Bib-TA-Pkg" firstAttribute="top" secondItem="RKy-ep-uy8" secondAttribute="bottom" constant="10" id="ZLj-zx-vVT"/>
+                <constraint firstItem="Zud-Bt-xNc" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.299424" id="cqH-CA-C61"/>
+                <constraint firstItem="Iht-De-1ay" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.299424" id="e5Y-9q-r2c"/>
+                <constraint firstItem="4Bq-rS-M7f" firstAttribute="leading" secondItem="Iht-De-1ay" secondAttribute="leading" id="eCk-MA-KTY"/>
+                <constraint firstItem="Zud-Bt-xNc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="eDs-ZO-u7Z"/>
+                <constraint firstItem="Zud-Bt-xNc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="30" id="fQ4-TF-ZDd"/>
+                <constraint firstItem="uJR-Tr-fls" firstAttribute="trailing" secondItem="Zud-Bt-xNc" secondAttribute="trailing" id="hds-eZ-lBu"/>
+                <constraint firstItem="Uc7-wX-HPz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="mPh-U9-Ckh"/>
+                <constraint firstItem="fIk-5W-WM0" firstAttribute="leading" secondItem="uJR-Tr-fls" secondAttribute="trailing" constant="2" id="rtN-qN-9jK"/>
+                <constraint firstItem="uJR-Tr-fls" firstAttribute="top" secondItem="Zud-Bt-xNc" secondAttribute="bottom" constant="5" id="sdN-GH-xFe"/>
+                <constraint firstAttribute="bottom" secondItem="fIk-5W-WM0" secondAttribute="bottom" constant="20" id="veb-sc-FZW"/>
+            </constraints>
+            <size key="customSize" width="570" height="271"/>
+            <connections>
+                <outlet property="imgViewAwayTeam" destination="Iht-De-1ay" id="jSH-jH-28h"/>
+                <outlet property="imgViewHomeTeam" destination="Zud-Bt-xNc" id="qJf-Ph-Zb1"/>
+                <outlet property="lblAwayTeam" destination="4Bq-rS-M7f" id="7ec-Fv-A5W"/>
+                <outlet property="lblEventDate" destination="RKy-ep-uy8" id="oZA-B1-Svw"/>
+                <outlet property="lblEventTime" destination="Bib-TA-Pkg" id="hF0-ME-mTp"/>
+                <outlet property="lblHomeTeam" destination="uJR-Tr-fls" id="jVD-rF-n0N"/>
+                <outlet property="lblScore" destination="Hon-YW-QsT" id="ldq-2H-ffT"/>
+                <outlet property="lblStadium" destination="fIk-5W-WM0" id="dbe-Um-QeE"/>
+            </connections>
+            <point key="canvasLocation" x="227.48091603053433" y="98.239436619718319"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="chelsea" width="384" height="384"/>
+        <image name="imgStadium" width="800" height="355"/>
+    </resources>
+</document>
