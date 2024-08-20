@@ -20,7 +20,6 @@ class TeamDetailsViewModel{
             let res = decodedData
             self.teamDetails = res.result.first
             handler()
-            
         }
     }
     

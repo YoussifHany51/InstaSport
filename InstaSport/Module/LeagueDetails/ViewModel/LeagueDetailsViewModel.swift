@@ -25,13 +25,15 @@ class LeagueDetailsViewModel{
         self.leagueNum=leagueNum
         self.league = LeagueModel(league: league)
     }
-    func getData(_ handler:@escaping()->Void){
-        //UpComingEvent Parser
-        DataParser().parsingFBData(ClassType: EventResult.self, checkSportOrLeague: false, checkUpComingOrLastEvents: true,leagueId: leagueNum, sport: sport) { decodedData in
+    
+    
+    func getData(_ handler: @escaping () -> Void) {
+        // UpComingEvent Parser
+        DataParser().parsingFBData(ClassType: EventResult.self, checkSportOrLeague: false, checkUpComingOrLastEvents: true, leagueId: leagueNum, sport: sport) { decodedData in
             let res = decodedData
-            self.arrUpComingEvents=res.result
+            self.arrUpComingEvents = res.result
             print("Try to decode Upcoming")
-            for item in self.arrUpComingEvents{
+            for item in self.arrUpComingEvents {
                 let obj = TeamsModel(imgUrl: item.homeTeamLogo ?? "imgFB", teamKey: "\(item.homeTeamKey)", teamName: item.eventHomeTeam ?? "Home team")
                 let obj2 = TeamsModel(imgUrl: item.awayTeamLogo ?? "imgFB", teamKey: "\(item.awayTeamKey)", teamName: item.eventAwayTeam ?? "Home team")
                 self.setTeams.insert(obj)
@@ -39,35 +41,79 @@ class LeagueDetailsViewModel{
                 print(self.setTeams.count)
             }
             self.arrTeams = Array(self.setTeams)
-            handler()
-        }
-        if self.arrUpComingEvents.count == 0{
-            self.putDefaultUpComingEventValue()
-        }
-        handler()
-        DataParser().parsingFBData(ClassType: EventResult.self, checkSportOrLeague: false, checkUpComingOrLastEvents: false, leagueId: leagueNum,sport: sport) { decodedData in
-            let res = decodedData
-            self.arrlastEvent=res.result
-            print("Try to decode LastEvent")
-            for item in self.arrUpComingEvents{
-                let obj = TeamsModel(imgUrl: item.homeTeamLogo ?? "imgFB", teamKey: "\(item.homeTeamKey)", teamName: item.eventHomeTeam ?? "HomeTeam")
-                let obj2 = TeamsModel(imgUrl: item.awayTeamLogo ?? "imgFB", teamKey: "\(item.awayTeamKey)", teamName: item.eventAwayTeam ?? "AwayTeam")
-                self.setTeams.insert(obj)
-                self.setTeams.insert(obj2)
-                print(self.setTeams.count)
-            }
-            self.arrTeams = Array(self.setTeams)
             
-            handler()
+            if self.arrUpComingEvents.count == 0 {
+                self.putDefaultUpComingEventValue()
+            }
+            
+            // Nested parser for last event
+            DataParser().parsingFBData(ClassType: EventResult.self, checkSportOrLeague: false, checkUpComingOrLastEvents: false, leagueId: self.leagueNum, sport: self.sport) { decodedData in
+                let res = decodedData
+                self.arrlastEvent = res.result
+                print("Try to decode LastEvent")
+                for item in self.arrlastEvent {
+                    let obj = TeamsModel(imgUrl: item.homeTeamLogo ?? "imgFB", teamKey: "\(item.homeTeamKey)", teamName: item.eventHomeTeam ?? "HomeTeam")
+                    let obj2 = TeamsModel(imgUrl: item.awayTeamLogo ?? "imgFB", teamKey: "\(item.awayTeamKey)", teamName: item.eventAwayTeam ?? "AwayTeam")
+                    self.setTeams.insert(obj)
+                    self.setTeams.insert(obj2)
+                    print(self.setTeams.count)
+                }
+                self.arrTeams = Array(self.setTeams)
+                
+                if self.arrlastEvent.count == 0 {
+                    self.putDefaultLastEventValue()
+                }
+                if self.arrTeams.count == 0 {
+                    self.putDefaultTeamValue()
+                }
+                
+                handler() // Call handler here, ensuring it's only called once
+            }
         }
-        if self.arrlastEvent.count == 0{
-            self.putDefaultLastEventValue()
-        }
-        if self.arrTeams.count == 0{
-            self.putDefaultTeamValue()
-        }
-        handler()
     }
+//    func getData(_ handler:@escaping()->Void){
+//        //UpComingEvent Parser
+//        DataParser().parsingFBData(ClassType: EventResult.self, checkSportOrLeague: false, checkUpComingOrLastEvents: true,leagueId: leagueNum, sport: sport) { decodedData in
+//            let res = decodedData
+//            self.arrUpComingEvents=res.result
+//            print("Try to decode Upcoming")
+//            for item in self.arrUpComingEvents{
+//                let obj = TeamsModel(imgUrl: item.homeTeamLogo ?? "imgFB", teamKey: "\(item.homeTeamKey)", teamName: item.eventHomeTeam ?? "Home team")
+//                let obj2 = TeamsModel(imgUrl: item.awayTeamLogo ?? "imgFB", teamKey: "\(item.awayTeamKey)", teamName: item.eventAwayTeam ?? "Home team")
+//                self.setTeams.insert(obj)
+//                self.setTeams.insert(obj2)
+//                print(self.setTeams.count)
+//            }
+//            self.arrTeams = Array(self.setTeams)
+//            handler()
+//        }
+//        if self.arrUpComingEvents.count == 0{
+//            self.putDefaultUpComingEventValue()
+//        }
+//        handler()
+//        DataParser().parsingFBData(ClassType: EventResult.self, checkSportOrLeague: false, checkUpComingOrLastEvents: false, leagueId: leagueNum,sport: sport) { decodedData in
+//            let res = decodedData
+//            self.arrlastEvent=res.result
+//            print("Try to decode LastEvent")
+//            for item in self.arrUpComingEvents{
+//                let obj = TeamsModel(imgUrl: item.homeTeamLogo ?? "imgFB", teamKey: "\(item.homeTeamKey)", teamName: item.eventHomeTeam ?? "HomeTeam")
+//                let obj2 = TeamsModel(imgUrl: item.awayTeamLogo ?? "imgFB", teamKey: "\(item.awayTeamKey)", teamName: item.eventAwayTeam ?? "AwayTeam")
+//                self.setTeams.insert(obj)
+//                self.setTeams.insert(obj2)
+//                print(self.setTeams.count)
+//            }
+//            self.arrTeams = Array(self.setTeams)
+//            
+//            handler()
+//        }
+//        if self.arrlastEvent.count == 0{
+//            self.putDefaultLastEventValue()
+//        }
+//        if self.arrTeams.count == 0{
+//            self.putDefaultTeamValue()
+//        }
+//        handler()
+//    }
     
     
     

@@ -53,4 +53,10 @@ extension LeagueModel {
         self.leagueLogo = leagueCD.leagueLogo
         self.leagueUrl = leagueCD.leagueUrl
     }
+    init(){
+        leagueKey=332
+        leagueName="MLS"
+        leagueLogo=nil
+        leagueUrl="https://www.youtube.com/@MLS"
+    }
 }
