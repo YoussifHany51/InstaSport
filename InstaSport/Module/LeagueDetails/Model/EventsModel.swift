@@ -14,26 +14,60 @@ struct EventModel: Decodable {
     let eventKey: Int
     let homeTeamKey:Int
     let awayTeamKey:Int
-    let eventDate, eventTime, eventHomeTeam: String
-    let eventAwayTeam: String
-    let eventHalftimeResult: String
-    let eventFinalResult, eventPenaltyResult: String
-    let countryName : String
-    let eventStadium : String
+    let eventDate, eventTime, eventHomeTeam: String?
+    let eventAwayTeam: String?
+    let eventHalftimeResult: String?
+    let eventFinalResult, eventPenaltyResult: String?
+    let countryName : String?
+    let eventStadium : String?
     let homeTeamLogo, awayTeamLogo: String?
+    
+    init() {
+        self.eventKey = 0
+        self.homeTeamKey = 0
+        self.awayTeamKey = 0
+        self.eventDate = ""
+        self.eventTime = ""
+        self.eventHomeTeam = ""
+        self.eventAwayTeam = ""
+        self.eventHalftimeResult = ""
+        self.eventFinalResult = "no Events Record from \(DateOptimizer.oneYearBefore)"
+        self.eventPenaltyResult = ""
+        self.countryName = ""
+        self.eventStadium = "no Events Record from \(DateOptimizer.oneYearBefore)"
+        self.homeTeamLogo = "Error"
+        self.awayTeamLogo = "Error"
+    }
+    init(i:Int) {
+        self.eventKey = 0
+        self.homeTeamKey = 0
+        self.awayTeamKey = 0
+        self.eventDate = ""
+        self.eventTime = "There is no Events untill \(DateOptimizer.oneYearAfter)"
+        self.eventHomeTeam = ""
+        self.eventAwayTeam = ""
+        self.eventHalftimeResult = ""
+        self.eventFinalResult = "There is no Events untill \(DateOptimizer.oneYearAfter)"
+        self.eventPenaltyResult = ""
+        self.countryName = ""
+        self.eventStadium = "There is no Events untill \(DateOptimizer.oneYearAfter)"
+        self.homeTeamLogo = "Error"
+        self.awayTeamLogo = "Error"
+    }
+    
+    
     init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.eventKey = try container.decode(Int.self, forKey: .eventKey)
-        self.eventDate = try container.decode(String.self, forKey: .eventDate)
-        self.eventTime = try container.decode(String.self, forKey: .eventTime)
-        self.eventHomeTeam = try container.decode(String.self, forKey: .eventHomeTeam)
-        self.eventAwayTeam = try container.decode(String.self, forKey: .eventAwayTeam)
-        self.eventHalftimeResult = try container.decode(String.self, forKey: .eventHalftimeResult)
-        self.eventFinalResult = try container.decode(String.self, forKey: .eventFinalResult)
-        self.eventPenaltyResult = try container.decode(String.self, forKey: .eventPenaltyResult)
-        //self.eventStatus = try container.decode(String.self, forKey: .eventStatus)
-        self.countryName = try container.decode(String.self, forKey: .countryName)
-        self.eventStadium = try container.decode(String.self, forKey: .eventStadium)
+        self.eventDate = try container.decodeIfPresent(String.self, forKey: .eventDate)
+        self.eventTime = try container.decodeIfPresent(String.self, forKey: .eventTime)
+        self.eventHomeTeam = try container.decodeIfPresent(String.self, forKey: .eventHomeTeam)
+        self.eventAwayTeam = try container.decodeIfPresent(String.self, forKey: .eventAwayTeam)
+        self.eventHalftimeResult = try container.decodeIfPresent(String.self, forKey: .eventHalftimeResult)
+        self.eventFinalResult = try container.decodeIfPresent(String.self, forKey: .eventFinalResult)
+        self.eventPenaltyResult = try container.decodeIfPresent(String.self, forKey: .eventPenaltyResult)
+        self.countryName = try container.decodeIfPresent(String.self, forKey: .countryName)
+        self.eventStadium = try container.decodeIfPresent(String.self, forKey: .eventStadium)
         self.homeTeamLogo = try container.decodeIfPresent(String.self, forKey: .homeTeamLogo)
         self.awayTeamLogo = try container.decodeIfPresent(String.self, forKey: .awayTeamLogo)
         self.homeTeamKey = try container.decode(Int.self, forKey: .homeTeamKey)
@@ -56,4 +90,5 @@ struct EventModel: Decodable {
         case homeTeamKey = "home_team_key"
         case awayTeamKey = "away_team_key"
     }
+    
 }

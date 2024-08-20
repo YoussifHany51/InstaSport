@@ -11,6 +11,7 @@ class PlayerCardCell: UICollectionViewCell {
 
     @IBOutlet weak var lblPosition: UILabel!
     
+    @IBOutlet weak var view: UIView!
     @IBOutlet weak var lblRate: UILabel!
     @IBOutlet weak var lblName: UILabel!
     
@@ -20,6 +21,10 @@ class PlayerCardCell: UICollectionViewCell {
     var viewModel : PlayerCardViewModel?
     override func awakeFromNib() {
         super.awakeFromNib()
+        view.layer.cornerRadius=20
+        view.layer.shadowRadius=10
+        view.layer.borderWidth=2
+        view.layer.borderColor=UIColor.gray.cgColor
         // Initialization code
     }
     func putData(){

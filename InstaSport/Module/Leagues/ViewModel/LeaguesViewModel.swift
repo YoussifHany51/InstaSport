@@ -6,18 +6,27 @@
 //
 
 import Foundation
-import Kingfisher
 class LeaguesViewModel{
     var sport:Sports
     var arrayOfLeagues:[LeagueModel] = []
-    init(sport:Sports,handler:@escaping(_ arr:[LeagueModel])->Void){
+    var arrFav:[LeagueCD]=[]
+    var checkFavorite:Bool
+    init(sport:Sports,checkFavorite:Bool){
         self.sport=sport
-        
+        self.checkFavorite=checkFavorite
+        if(checkFavorite){
+            reloadCoreData()
+        }
+    }
+    func reloadCoreData(){
+        arrFav = CoreDataManager.shared.fetchSavedLeagues()
+    }
+    func getData(handler:@escaping()->Void){
         DataParser().parsingFBData(ClassType: LeagueResult.self, checkSportOrLeague: true, sport: sport) { decodedData in
             let res = decodedData
             self.arrayOfLeagues = res.result
-            handler(self.arrayOfLeagues)
+            handler()
         }
         
-        }
+    }
     }

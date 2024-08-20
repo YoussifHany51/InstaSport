@@ -10,14 +10,19 @@ import CoreData
 
 
 
-class LeagueDetailsCollectionViewController: UICollectionViewController {
+class LeagueDetailsCollectionViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     var viewModel:LeagueDetailsViewModel?
+    var checkFav:Bool = false {
+        didSet{
+            setupFavoriteButton()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        //viewModel = LeagueDetailsViewModel(sport: .football)
         viewModel?.getData({
             self.collectionView.reloadData()
         })
+        collectionView.register(MyCustomHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
         self.collectionView.RegisterNib(cell: TeamsCell.self)
         self.collectionView.RegisterNib(cell: UpComingEventCell.self)
         self.collectionView.RegisterNib(cell: LatestResultCell.self)
@@ -35,18 +40,25 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
         }
         self.collectionView.setCollectionViewLayout(compositionalLayout, animated: true)
         self.setupFavoriteButton()
+        self.title=viewModel?.league.leagueName
     }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+            return CGSize(width: collectionView.frame.width, height: 10) // Example header size
+        }
     //func
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+               let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as! MyCustomHeaderView
+               switch indexPath.section{
+               case 0:header.titleLabel.text = "UpComing Events"
+               case 1:header.titleLabel.text = "Latest Events"
+               case 2:header.titleLabel.text = "Teams"
+               default:header.titleLabel.text = "Section Zyad"
+               }
+               
+               return header
+           
+           
+       }
 
     // MARK: UICollectionViewDataSource
 
@@ -75,21 +87,33 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
             let cell = collectionView.deque(cell: UpComingEventCell.self)
             cell.viewModel = UpComingEventViewModel(obj: viewModel!.arrUpComingEvents[indexPath.row])
             cell.putData()
+            cell.layer.cornerRadius = 10
+            
             return cell
         }
         else if indexPath.section == 1 {
             let cell = collectionView.deque(cell: LatestResultCell.self)
             cell.viewModel = LatestResultViewModel(obj: viewModel!.arrlastEvent[indexPath.row])
             cell.putData()
+            cell.layer.cornerRadius = 10
+
             return cell
             
         }else{
             let cell = collectionView.deque(cell: TeamsCell.self)
             cell.viewModel = TeamsViewModel(obj: viewModel!.arrTeams[indexPath.row])
             cell.putData()
+            cell.layer.cornerRadius = 10
+
             return cell
         }
         //cell.imgView
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 2{
@@ -100,18 +124,26 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
         }
     }
     func drawFirstCollection() -> NSCollectionLayoutSection{
-        // gave the item in group the full size of it
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
-        // create the item itself
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         // create the group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .absolute(200))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.99), heightDimension: .absolute(200))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets =   NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10)
+        group.contentInsets =   NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5)
         // create a section
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = NSDirectionalEdgeInsets(top: 50, leading: 5, bottom: 5, trailing: 5)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 5, bottom: 15, trailing: 5)
+        // Define the header size
+            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(10))
+            let header = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: headerSize,
+                elementKind: UICollectionView.elementKindSectionHeader,
+                alignment: .top
+            )
+            
+            // Add the header to the section
+            section.boundarySupplementaryItems = [header]
         // animation
         section.visibleItemsInvalidationHandler = { (items, offset, environment) in
         items.forEach { item in
@@ -126,18 +158,25 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
     }
     
     func drawSecondCollection() -> NSCollectionLayoutSection{
-        // gave the item in group the full size of it
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.25))
-        // create the item itself
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.33))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         // create the group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.75))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.65))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        group.contentInsets =   NSDirectionalEdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0)
+        group.contentInsets =   NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         // create a section
         let section = NSCollectionLayoutSection(group: group)
         //section.orthogonalScrollingBehavior = .continuous
         section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 5, bottom: 20, trailing: 5)
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(10))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        // Add the header to the section
+        section.boundarySupplementaryItems = [header]
         return section
     }
 
@@ -153,35 +192,59 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
         
         navigationItem.rightBarButtonItem = favoriteButton
     }
+    
+    
+    
         
         func drawThirdCollection() -> NSCollectionLayoutSection{
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .absolute(100))
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .absolute(120))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
             group.contentInsets =   NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 5)
             let section = NSCollectionLayoutSection(group: group)
             section.orthogonalScrollingBehavior = .continuous
-            section.contentInsets = NSDirectionalEdgeInsets(top: 30, leading: 5, bottom: 5, trailing: 0)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 5, bottom: 5, trailing: 0)
+            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(10))
+            let header = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: headerSize,
+                elementKind: UICollectionView.elementKindSectionHeader,
+                alignment: .top
+            )
+            // Add the header to the section
+            section.boundarySupplementaryItems = [header]
+            // animation
+            section.visibleItemsInvalidationHandler = { (items, offset, environment) in
+            items.forEach { item in
+            let distanceFromCenter = abs((item.frame.midX - offset.x) - environment.container.contentSize.width / 2.0)
+            let minScale: CGFloat = 0.8
+            let maxScale: CGFloat = 1.0
+            let scale = max(maxScale - (distanceFromCenter / environment.container.contentSize.width), minScale)
+            item.transform = CGAffineTransform(scaleX: scale, y: scale)
+            }
+            }
             return section
         }
-        // MARK: UICollectionViewDelegate
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-            return false
-            
-        }
+
     @objc func addToFavorites(){
         if CoreDataManager.shared.isFavorite(league: viewModel!.league,
                                                  arrayOfLeagues: CoreDataManager.shared.fetchSavedLeagues()){
                 showAlert()
+            
             }else{
-                CoreDataManager.shared.saveLeague(viewModel!.league)
+                CoreDataManager.shared.saveLeague(viewModel!.league,sport:viewModel!.sport)
+                checkFav=true
             }
         }
         func showAlert(){
-            let alert = UIAlertController(title: "Already in Favorite", message: "", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
+            let alert = UIAlertController(title: "are U sure to delete", message: "", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Okay", style: .default) { alert in
+                CoreDataManager.shared.removeLeague(leagueKey: self.viewModel!.league.leagueKey)
+                self.checkFav = false
+            }
             alert.addAction(action)
+            let action2 = UIAlertAction(title: "Cancel", style: .default,handler: nil)
+            alert.addAction(action2)
             self.present(alert,animated: true)
         }
     }

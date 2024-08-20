@@ -25,6 +25,8 @@ class NWService{
     func fetchTeamDetails(teamId:String,handler:@escaping(_ data:Data)->Void){
         var param:[String:Any]=[:]
         param = ["met":"Teams","teamId":teamId,"APIkey": "2c28d4947373c9aad33c4b48c0f99c79ce4469f4c59f207b0ee9d8f73d2ae9e2"]
+        
+        print(fullURL)
         AF.request(fullURL,method: .get,parameters: param,encoding: URLEncoding.default,headers: nil,interceptor: nil).response { response in
             switch response.result{
             case .success(let data):print("Fetch Teams Details data success")
@@ -49,7 +51,9 @@ class NWService{
                      "to":checkUpComingOrLastEvents ? DateOptimizer.oneYearAfter : DateOptimizer.currentDate,
                      "APIkey": "2c28d4947373c9aad33c4b48c0f99c79ce4469f4c59f207b0ee9d8f73d2ae9e2"]
         }
-         
+        print("the full url")
+        print(fullURL)
+        print(param)
         AF.request(fullURL,method: .get,parameters: param,encoding: URLEncoding.default,headers: nil,interceptor: nil).response { response in
             switch response.result{
             case .success(let data):print("Fetch data success");handler(data!)

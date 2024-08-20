@@ -25,6 +25,12 @@ struct LeagueModel: Codable {
         case leagueLogo = "league_logo"
         case leagueUrl = "league_url"
     }
+    init(league:LeagueCD){
+        leagueKey=Int(league.leagueKey)
+        leagueName=league.leagueName!
+        leagueLogo=league.leagueLogo
+        leagueUrl=league.leagueUrl
+    }
     init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.leagueKey = try container.decode(Int.self, forKey: .leagueKey)
@@ -33,6 +39,7 @@ struct LeagueModel: Codable {
         self.leagueUrl = "https://www.youtube.com/@\(leagueName)"
     }
 }
+
 extension LeagueModel {
     init(from leagueCD: LeagueCD) {
         self.leagueKey = Int(leagueCD.leagueKey)
